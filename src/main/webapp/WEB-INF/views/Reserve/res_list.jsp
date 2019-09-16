@@ -59,6 +59,9 @@
 	href="${pageContext.request.contextPath}/assets/css/shop-homepage.css"
 	rel="stylesheet">
 <body>
+	<header>
+	 <%@ include file="header.jsp"%>
+	</header>
 	<%-- <%if(loginInfo == null) {
 		/* webHelper.redirect(null, "로그인 후 이용 가능합니다."); */
 		out.println("로그인후 이용 가능");
@@ -199,5 +202,9 @@
 	<link
 		href="${pageContext.request.contextPath}/assets/css/shop-homepage.css"
 		rel="stylesheet">
-<body></body>
+
+	<footer> 
+	<%@ include file="footer.jsp"%>
+	</footer>
+</body>
 </html>

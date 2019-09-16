@@ -21,6 +21,10 @@
 	href="${pageContext.request.contextPath}/assets/css/shop-homepage.css"
 	rel="stylesheet">
 <body>
+
+	<header>
+		<%@ include file="header.jsp"%>
+	</header>
 	<div class="container">
 
 		<div class="row">
@@ -157,6 +161,10 @@
 			</div>
 		</div>
 	</div>
+	
+	<footer>
+		<%@ include file="footer.jsp"%>
+	</footer>
 </body>
 <script
 	src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery.min.js"></script>

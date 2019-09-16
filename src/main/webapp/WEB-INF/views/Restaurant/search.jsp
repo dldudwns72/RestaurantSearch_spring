@@ -26,7 +26,7 @@
 </head>
 <body>
 	<header>
-		<%@ include file="/views/header.jsp"%>
+		<%@ include file="header.jsp"%>
 	</header>
 
 
@@ -168,7 +168,7 @@
 	</div>
 
 	<footer>
-		<%@ include file="/views/footer.jsp"%>
+		<%@ include file="footer.jsp"%>
 	</footer>
 </body>
 <script

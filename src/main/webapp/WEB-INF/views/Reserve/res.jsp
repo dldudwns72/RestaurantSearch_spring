@@ -16,7 +16,13 @@
 
 </head>
 <body>
-<form name="checktest" method="get" action="${pageContext.request.contextPath}/Reserve/res_list.do">
+
+	<header>
+		<%@ include file="header.jsp"%>
+	</header>
+
+	<form name="checktest" method="get"
+		action="${pageContext.request.contextPath}/Reserve/res_list.do">
 		<h1>
 			<input type="hidden" id="getTitle" name="getTitle"
 				value="${output.title}">
@@ -39,23 +45,29 @@
 			onClick="window.close()">
 
 		<script type="text/javascript">
-var getTitle = "${output.title}";
-var getcheckdate = "${checkdate}";
-var getTitle = document.checktest.getTitle.value;
-function ReserveCheck(){
-	
-	/* window.name="parentFrom"; */
-	/* widnow.open("res_list.jsp","chkForm","width=400, height=300, left=100, top=50") */
-	window.open("${pageContext.request.contextPath}/Reserve/res_list.do?title="+document.checktest.getTitle.value,"reservecheckform");
-	window.close();
-	
-	
-}
+			var getTitle = "${output.title}";
+			var getcheckdate = "${checkdate}";
+			var getTitle = document.checktest.getTitle.value;
+			function ReserveCheck() {
 
-/* var ret = window.open("res_list.jsp","_blank")  */
-</script>
+				/* window.name="parentFrom"; */
+				/* widnow.open("res_list.jsp","chkForm","width=400, height=300, left=100, top=50") */
+				window.open(
+						"${pageContext.request.contextPath}/Reserve/res_list.do?title="
+								+ document.checktest.getTitle.value,
+						"reservecheckform");
+				window.close();
+
+			}
+
+			/* var ret = window.open("res_list.jsp","_blank")  */
+		</script>
 
 	</form>
+	
+	<footer>
+		<%@ include file="footer.jsp"%>
+	</footer>
 </body>
 
 

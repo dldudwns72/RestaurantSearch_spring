@@ -21,8 +21,9 @@
 	// 예약
 	function reserve() {
 		window.name = "parentForm";
-		window.open("${pageContext.request.contextPath}/Reserve/res.do?restNo=" + document.reservation.restNo.value,
-				"chkForm", "width=400, height=300, left=100, top=50");
+		window.open("${pageContext.request.contextPath}/Reserve/res.do?restNo="
+				+ document.reservation.restNo.value, "chkForm",
+				"width=400, height=300, left=100, top=50");
 
 	}
 </script>
@@ -38,6 +39,9 @@
 	href="${pageContext.request.contextPath}/assets/css/shop-homepage.css"
 	rel="stylesheet">
 <body>
+	<header>
+		<%@ include file="header.jsp"%>
+	</header>
 
 	<div class="container">
 
@@ -62,12 +66,8 @@
 
 					</div>
 				</form>
-				
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
+
+				<br /> <br /> <br /> <br /> <br />
 
 			</div>
 		</div>
@@ -80,12 +80,18 @@
 			<div class="col-lg-3">
 
 				<div class="list-group">
-					<a href="${pageContext.request.contextPath}/Restaurant/cate_kor.do" class="list-group-item">한식</a> <a
-						href="${pageContext.request.contextPath}/Restaurant/cate_chn.do" class="list-group-item">중식</a> <a
-						href="${pageContext.request.contextPath}/Restaurant/cate_jpn.do" class="list-group-item">일식</a> <a
-						href="${pageContext.request.contextPath}/Restaurant/cate_wtf.do" class="list-group-item">양식</a> <a
-						href="${pageContext.request.contextPath}/Restaurant/cate_cafe.do" class="list-group-item">카페 및 디저트</a> <a
-						href="${pageContext.request.contextPath}/Restaurant/cate_etc.do" class="list-group-item">기타 음식점</a>
+					<a href="${pageContext.request.contextPath}/Restaurant/cate_kor.do"
+						class="list-group-item">한식</a> <a
+						href="${pageContext.request.contextPath}/Restaurant/cate_chn.do"
+						class="list-group-item">중식</a> <a
+						href="${pageContext.request.contextPath}/Restaurant/cate_jpn.do"
+						class="list-group-item">일식</a> <a
+						href="${pageContext.request.contextPath}/Restaurant/cate_wtf.do"
+						class="list-group-item">양식</a> <a
+						href="${pageContext.request.contextPath}/Restaurant/cate_cafe.do"
+						class="list-group-item">카페 및 디저트</a> <a
+						href="${pageContext.request.contextPath}/Restaurant/cate_etc.do"
+						class="list-group-item">기타 음식점</a>
 				</div>
 
 			</div>
@@ -146,4 +152,8 @@
 
 		</div>
 	</div>
+	
+	<footer>
+		<%@ include file="footer.jsp"%>
+	</footer>
 </body>
