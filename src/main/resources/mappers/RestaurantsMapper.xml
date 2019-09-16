@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RestaurantsMapper">
+    <!-- Beans 클래스의 객체이름(restNo)과 클래스이름(type)을 명시한다. -->
+    <resultMap id="restaurantMap" type="study.spring.springhelper.model.Restaurants$Items">
+        <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+        <result property="restNo" column="restNo" />
+        <result property="title" column="title" />
+        <result property="link" column="link" />
+        <result property="category" column="category" />
+        <result property="description" column="description" />
+        <result property="telephone" column="telephone" />
+        <result property="address" column="address" />
+        <result property="roadAddress" column="roadAddress" />
+        <result property="mapx" column="mapx" />
+        <result property="mapy" column="mapy" />
+        
+    </resultMap>
+    <!-- 단일행 조회를 위한 기능 정의 -->
+    <select id="selectItem" 
+            parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            resultMap="restaurantMap">
+        <!-- "#{변수명}" 으로 표시된 곳에 멤버변수가 치환된다. -->
+        select restNo,title,link,category,description,
+        telephone,address,roadAddress,mapx,mapy from restaurant where restNo=#{restNo};
+    </select>
+    
+    <!-- 다중행 조회를 위한 기능 정의 -->
+    <select id="selectList"
+    		parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            resultMap="restaurantMap">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        select restNo,title,link,category,description,
+        telephone,address,roadAddress,mapx,mapy from restaurant 
+         <where>
+        	<if test="title != null and title != ''">
+        		title like concat('%',#{title},'%')
+        	</if>
+        	<if test="category != null and category != ''">
+        		or category like concat('%',#{category},'%')
+        	 </if> 
+        </where> 
+        <if test="listCount > 0 ">
+        	limit #{offset},#{listCount} 
+        </if>
+    </select>
+    
+    
+    <!-- 한식 조회를 위한 기능 정의 -->
+    <select id="selectList_kor"
+    		parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            resultMap="restaurantMap">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        select restNo,title,link,category,description,
+        telephone,address,roadAddress,mapx,mapy from restaurant
+        where category like "%한식%" 
+        <if test="title != null and title != ''">
+        and title like concat('%',#{title},'%')
+        </if> 
+    <!--  <where>
+        	 <if test="category != null and category != ''">
+       		category like "%한식%"
+        	 </if>  
+        </where> -->
+        <if test="listCount >0">
+        	limit #{offset},#{listCount} 
+        </if> 
+    </select>
+    
+    
+    <!-- 양식 조회를 위한 기능 정의 -->
+    <select id="selectList_Wtf" 
+            parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            resultMap="restaurantMap">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        select restNo,title,link,category,description,
+        telephone,address,roadAddress,mapx,mapy from restaurant
+       where category like "%양식%"
+       <if test="title != null and title != ''">
+          and title like concat('%',#{title},'%')
+       </if>
+      <!--  <where>
+        	
+        	<if test="category != null and category != ''">
+        		or category like concat('%',양식,'%')
+        	 </if> 
+        </where> -->
+        <if test="listCount >0">
+        	limit #{offset},#{listCount} 
+        </if>
+    </select>
+    
+    <!-- 일식 조회를 위한 기능 정의 -->
+    <select id="selectList_Jpn" 
+            parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            resultMap="restaurantMap">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        select restNo,title,link,category,description,
+        telephone,address,roadAddress,mapx,mapy from restaurant
+       where category like "%일식%" 
+       <if test="title != null and title != ''">
+        	and	title like concat('%',#{title},'%')
+        </if>
+       <!-- <where>	
+        	<if test="category != null and category != ''">
+        		or category like '%일식%'
+        	 </if> 
+        </where> -->
+        <if test="listCount >0">
+        	limit #{offset},#{listCount} 
+        </if>
+    </select>
+    
+    <!-- 중식 조회를 위한 기능 정의 -->
+    <select id="selectList_Chn" 
+            parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            resultMap="restaurantMap">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        select restNo,title,link,category,description,
+        telephone,address,roadAddress,mapx,mapy from restaurant
+        where category like "%중식%" 
+        <if test="title != null and title != ''">
+        	and	title like concat('%',#{title},'%')
+        	</if>
+       <!-- <where>
+        	
+        	<if test="category != null and category != ''">
+        		or category like '%중식%'
+        	 </if> 
+        </where> -->
+        <if test="listCount >0">
+        	limit #{offset},#{listCount} 
+        </if>
+    </select>
+    
+    
+    <!-- 카페 조회를 위한 기능 정의 -->
+    <select id="selectList_Cafe" 
+            parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            resultMap="restaurantMap">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        select restNo,title,link,category,description,
+        telephone,address,roadAddress,mapx,mapy from restaurant
+        where category like "%카페%" or "%디저트%" 
+        
+        <if test="title != null and title != ''">
+        	and title like concat('%',#{title},'%')
+        </if>
+       <!--  <where>
+        	<if test="category != null and category != ''">
+        		or category like '%카페%'
+        	 </if> 
+        </where> -->
+        <if test="listCount >0">
+        	limit #{offset},#{listCount} 
+        </if>
+    </select>
+    
+    <!-- 그 외 조회를 위한 기능 정의 -->
+    <select id="selectList_Etc"
+            parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            resultMap="restaurantMap">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        select restNo,title,link,category,description,
+        telephone,address,roadAddress,mapx,mapy from restaurant
+        where not category like "%한식%" and not category like "%양식%" and not category like "%중식%" 
+        and not category like "%일식%" and not category like "%카페%" 
+        <if test="title != null and title != ''">
+        	and title like concat('%',#{title},'%')
+        	</if>
+       <!--  <where>
+        	
+        	<if test="category != null and category != ''">
+        		or category like '%한식%'
+        	 </if> 
+        </where> -->
+        <if test="listCount >0">
+        	limit #{offset},#{listCount} 
+        </if>
+    </select>
+    
+    <!-- 데이터 수 조회를 위한 기능 정의 , result 값이 int 형으로 나오므로 resultType = int 선언  -->
+    <select id="selectCount" 
+            parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            resultType="int">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        SELECT COUNT(*) FROM restaurant
+        <where>
+        	<if test="title != null and title != ''">
+        		title like concat('%',#{title},'%')
+        	</if>
+        	 <if test="category != null and category != ''">
+        		or category like concat('%',#{category},'%')
+        	</if> 
+        </where>
+    </select>
+    
+     <!-- 데이터 수 조회를 위한 기능 정의 , result 값이 int 형으로 나오므로 resultType = int 선언  -->
+    <select id="selectCount_Kor" 
+            parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            resultType="int">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        SELECT COUNT(*) FROM restaurant
+        where category like "%한식%"
+        <if test="title != null and title != ''">
+            and title like concat('%',#{title},'%')
+        </if>
+    </select>
+    
+     <!-- 데이터 수 조회를 위한 기능 정의 , result 값이 int 형으로 나오므로 resultType = int 선언  -->
+    <select id="selectCount_Chn" 
+            parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            resultType="int">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        SELECT COUNT(*) FROM restaurant
+        where category like "%중식%"
+        <if test="title != null and title != ''">
+            and title like concat('%',#{title},'%')
+        </if>
+    </select>
+    
+     <!-- 데이터 수 조회를 위한 기능 정의 , result 값이 int 형으로 나오므로 resultType = int 선언  -->
+    <select id="selectCount_Jpn" 
+            parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            resultType="int">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        SELECT COUNT(*) FROM restaurant
+        where category like "%일식%"
+        <if test="title != null and title != ''">
+            and title like concat('%',#{title},'%')
+        </if>
+    </select>
+    
+     <!-- 데이터 수 조회를 위한 기능 정의 , result 값이 int 형으로 나오므로 resultType = int 선언  -->
+    <select id="selectCount_Wtf" 
+            parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            resultType="int">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        SELECT COUNT(*) FROM restaurant
+        where category like "%양식%"
+        <if test="title != null and title != ''">
+            and title like concat('%',#{title},'%')
+        </if>
+    </select>
+    
+     <!-- 데이터 수 조회를 위한 기능 정의 , result 값이 int 형으로 나오므로 resultType = int 선언  -->
+    <select id="selectCount_Cafe" 
+            parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            resultType="int">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        SELECT COUNT(*) FROM restaurant
+        where category like "%카페%"
+        <if test="title != null and title != ''">
+            and title like concat('%',#{title},'%')
+        </if>
+    </select>
+    
+     <!-- 데이터 수 조회를 위한 기능 정의 , result 값이 int 형으로 나오므로 resultType = int 선언  -->
+    <select id="selectCount_Etc" 
+            parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            resultType="int">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        SELECT COUNT(*) FROM restaurant
+        where not category like "%한식%" and not category like "%양식%" and not category like "%중식%" 
+        and not category like "%일식%" and not category like "%카페%" 
+        <if test="title != null and title != ''">
+            and title like concat('%',#{title},'%')
+        </if>
+    </select>
+    
+    
+    <!-- 데이터 저장을 위한 기능 정의 -->
+    <insert id="insertItem" 
+            parameterType="study.spring.springhelper.model.Restaurants$Items" 
+            useGeneratedKeys="true"
+            keyProperty="restNo">
+        <!-- "#{변수명}" 으로 표시된 곳에 Beans의 멤버변수가 치환된다. -->
+        insert into restaurant(title,link,category,description,
+        telephone,address,roadAddress,mapx,mapy) values (#{title},#{link},#{category},#{description},
+        #{telephone},#{address},#{roadAddress},#{mapx},#{mapy});
+    </insert>
+    
+    <!-- 데이터 삭제를 위한 기능 정의 -->
+    <delete id="deleteItem" parameterType="study.spring.springhelper.model.Restaurants$Items">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        delete from restaurant where restNo =#{restNo};
+    </delete>
+    
+    <!-- 데이터 갱신을 위한 기능 정의 -->
+    <update id="updateItem" parameterType="study.spring.springhelper.model.Restaurants$Items">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        update restaurant set title =#{title},category=#{category} where restNo = #{restNo};
+    </update>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReserveCheckMapper">
+    <!-- Beans 클래스의 객체이름(restNo)과 클래스이름(type)을 명시한다. -->
+    <resultMap id="reservecheckMap" type="study.spring.springhelper.model.ReserveCheck">
+        <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+        <result property="checkNo" column="checkNo" />
+        <result property="title" column="title" />
+        <result property="checkdate" column="checkdate" />
+        
+    </resultMap>
+    <!-- 단일행 조회를 위한 기능 정의 -->
+    <select id="selectItem" 
+            parameterType="study.spring.springhelper.model.ReserveCheck" 
+            resultMap="reservecheckMap">
+        <!-- "#{변수명}" 으로 표시된 곳에 멤버변수가 치환된다. -->
+        select restNo,title,link,category,description,
+        telephone,address,roadAddress,mapx,mapy from restaurant where restNo=#{restNo};
+    </select>
+    
+    <!-- 다중행 조회를 위한 기능 정의 -->
+    <select id="selectList"
+    		parameterType="study.spring.springhelper.model.ReserveCheck" 
+            resultMap="reservecheckMap">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        <!-- select r.title,u.userId from reservecheck rc,restaurant r, user u 
+        where r.restNo =rc.restNo and u.userNo = rc.userNo; -->
+        select checkNo,title,checkdate from reservecheck
+         <!-- <where>
+        	<if test="title != null and title != ''">
+        		title like concat('%',#{title},'%')
+        	</if>
+        	<if test="category != null and category != ''">
+        		or category like concat('%',#{category},'%')
+        	 </if> 
+        </where>  -->
+        <if test="listCount > 0 ">
+        	limit #{offset},#{listCount} 
+        </if>
+    </select>
+    
+    <!-- 데이터 수 조회를 위한 기능 정의 , result 값이 int 형으로 나오므로 resultType = int 선언  -->
+    <select id="selectCount" 
+            parameterType="study.spring.springhelper.model.ReserveCheck" 
+            resultType="int">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        SELECT COUNT(*) FROM reservecheck
+        <!-- <where>
+        	<if test="title != null and title != ''">
+        		title like concat('%',#{title},'%')
+        	</if>
+        	 <if test="category != null and category != ''">
+        		or category like concat('%',#{category},'%')
+        	</if> 
+        </where> -->
+    </select>
+    
+    <!-- 데이터 저장을 위한 기능 정의 -->
+    <insert id="insertItem" 
+            parameterType="study.spring.springhelper.model.ReserveCheck" 
+            useGeneratedKeys="true"
+            keyProperty="checkNo">
+        <!-- "#{변수명}" 으로 표시된 곳에 Beans의 멤버변수가 치환된다. -->
+        <!-- insert into reservecheck(title,checkdate,userid) values (#{title},#{checkdate},#{userid})
+        from reservecheck -->
+        insert into reservecheck(title,checkdate) values(#{title},#{checkdate})
+    </insert>
+    
+    <!-- 데이터 삭제를 위한 기능 정의 -->
+    <delete id="deleteItem" parameterType="study.spring.springhelper.model.ReserveCheck">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        delete from reservecheck where checkNo =#{checkNo};
+    </delete>
+    
+    <!-- 데이터 갱신을 위한 기능 정의 -->
+    <update id="updateItem" parameterType="study.spring.springhelper.model.ReserveCheck">
+        <!-- 이 안에서 처리할 SQL문을 명시한다. -->
+        update reservecheck set title =#{title},category=#{category} where restNo = #{restNo};
+    </update>
+</mapper>
