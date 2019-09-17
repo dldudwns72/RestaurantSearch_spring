@@ -97,7 +97,8 @@
 			</div>
 
 			<div class="col-lg-4">
-				<img src="img/kit.jpg" width="350" height="300">
+				<input type = "hidden" name = "query" id = "query" value="${output.title}"/> 
+				<img src="${img_search.getThumbnail()}" width="350" height="300">
 			</div>
 
 			<div class="col-lg-4">
@@ -111,7 +112,7 @@
 
 						<hr />
 						<c:choose>
-							<c:when test="$output.telephone.equals(null)">
+							<c:when test="${output.telephone.equals(null)}">
 								<h1>해당 음식점의 전화번호가 없습니다.</h1>
 							</c:when>
 							<c:otherwise>

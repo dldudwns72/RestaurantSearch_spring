@@ -74,7 +74,6 @@
 						href="cate_wtf.do" class="list-group-item">양식</a> <a
 						href="cate_cafe.do" class="list-group-item">카페</a> <a
 						href="cate_etc.do" class="list-group-item">기타</a>
-
 				</div>
 
 			</div>
@@ -98,12 +97,17 @@
 								<c:set var="telephone" value="${item.telephone}" />
 								<c:set var="category" value="${item.category}" />
 								<div class="col-lg-4 col-md-6 mb-4">
-									<!-- <form method = "get" action = "cate-Search.jsp"> -->
 									<div class="card h-100">
-										<a
-											href="${pageContext.request.contextPath}/Restaurant/place_info.do">
-											<img src="#" width="222" height="128">
+									<form action = "${pageContext.request.contextPath}/Restaurant/search.do">
+									<input type="hidden" name = "query" id="query" value="${title}"> 
+										<a href="${pageContext.request.contextPath}/Restaurant/place_info.do?restNo=${restNo}">
+											<img src="${result}" width="222" height="128">
 										</a>
+									</form>	
+										<%-- <a
+											href="${pageContext.request.contextPath}/Restaurant/place_info.do?restNo=${restNo}">
+											<img src="#" width="222" height="128">
+										</a>  --%>
 										<div class="card-body">
 											<h4 class="card-title">
 
@@ -112,7 +116,7 @@
 													href="${pageContext.request.contextPath}/Restaurant/place_info.do?restNo=${restNo}">${title}</a>
 											</h4>
 											<!-- %telephone -->
-											<h5>${telephone}</h5>
+											<h5>${telephone},${result}</h5>
 											<!-- %address -->
 											<p class="card-text">${address}</p>
 

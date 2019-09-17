@@ -195,6 +195,10 @@
 
 	</div>
 	<!-- /.col-lg-9 -->
+	
+	<footer> 
+	<%@ include file="footer.jsp"%>
+	</footer>
 
 
 	<!-- Custom styles for this template -->
@@ -203,8 +207,6 @@
 		href="${pageContext.request.contextPath}/assets/css/shop-homepage.css"
 		rel="stylesheet">
 
-	<footer> 
-	<%@ include file="footer.jsp"%>
-	</footer>
+	
 </body>
 </html>

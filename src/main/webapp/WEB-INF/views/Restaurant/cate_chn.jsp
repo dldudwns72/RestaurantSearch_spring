@@ -68,7 +68,7 @@
 						href="cate_chn.do" class="list-group-item">중식</a> <a
 						href="cate_jpn.do" class="list-group-item">일식</a> <a
 						href="cate_wtf.do" class="list-group-item">양식</a> <a
-						href="cate_cafe.do" class="list-group-item">카페</a> <a
+						href="cate_cafe.do" class="list-group-item">카페 및 디저트</a> <a
 						href="cate_etc.do" class="list-group-item">기타</a>
 
 				</div>
@@ -133,7 +133,7 @@
 				<!-- 􏰄페이지번호 􏰄-->
 				<c:forEach var="i" begin="${pageData.startPage}"
 					end="${pageData.endPage}" varStatus="status">
-					<c:url value="/Restaurant/cate_jpn.do" var="pageUrl">
+					<c:url value="/Restaurant/cate_chn.do" var="pageUrl">
 						<c:param name="page" value="${i}" />
 						<c:param name="keyword" value="${keyword}" />
 					</c:url>
@@ -150,7 +150,7 @@
 				<!-- 다음 페이지 그룹 링크  -->
 				<c:choose>
 					<c:when test="${pageData.nextPage > 0}">
-						<c:url value="/Restaurant/cate_jpn.do" var="nextPageUrl">
+						<c:url value="/Restaurant/cate_chn.do" var="nextPageUrl">
 							<c:param name="page" value="${pageData.nextPage}" />
 							<c:param name="keyword" value="${keyword}" />
 						</c:url>
