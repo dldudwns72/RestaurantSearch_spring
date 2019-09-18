@@ -91,7 +91,7 @@
 						href="${pageContext.request.contextPath}/Restaurant/cate_cafe.do"
 						class="list-group-item">카페 및 디저트</a> <a
 						href="${pageContext.request.contextPath}/Restaurant/cate_etc.do"
-						class="list-group-item">기타 음식점</a>
+						class="list-group-item">기타</a>
 				</div>
 
 			</div>

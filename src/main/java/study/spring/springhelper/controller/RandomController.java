@@ -47,13 +47,13 @@ public class RandomController {
 
 		Restaurants.Items input = new Restaurants.Items();
 		input.setTitle(keyword);
-
-		String[] randomMenu_kor = { "불고기", "된장", "순두부", "뼈해장국", "김치볶음밥" };
-		String[] randomMenu_jpn = { "스시", "초밥", "카츠", "라멘", "사케" };
-		String[] randomMenu_chn = { "짜장", "짬뽕", "탕수", "사천", "중국" };
-		String[] randomMenu_wtf = { "양식", "버거", "순두부", "미즈", "안녕" };
-		String[] randomMenu_cafe = { "카페", "커피", "디저트", "마카롱", "베이커리" };
-		String[] randomMenu_etc = { "베트남", "쌀국수", "키친", "타코", "가든" };
+		
+		String[] randomMenu_kor = { "불고기", "된장", "순두부", "뼈해장국", "김치", "냉면", "곱창", "감자", "찜닭", "해물", "생선", "족발", "삼계탕" };
+		String[] randomMenu_jpn = { "스시", "초밥", "규카츠", "라멘", "사케", };
+		String[] randomMenu_chn = { "짜장", "짬뽕", "탕수육", "사천", "중국","양꼬치", "마라탕", "마라샹궈" , "" };
+		String[] randomMenu_wtf = { "양식", "버거", "파스타", "미즈", "" };
+		String[] randomMenu_cafe = { "카페", "커피", "디저트", "마카롱", "베이커리", "밀크티", "과일주스" };
+		String[] randomMenu_etc = { "베트남", "쌀국수", "키친", "타코", "가든", "술", "브런치" };
 
 		for (int i = 0; i < randomMenu_kor.length; i++) {
 			randomMenus_kor.add(randomMenu_kor[i]);

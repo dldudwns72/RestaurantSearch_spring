@@ -69,7 +69,7 @@
 						href="cate_chn.do" class="list-group-item">중식</a> <a
 						href="cate_jpn.do" class="list-group-item">일식</a> <a
 						href="cate_wtf.do" class="list-group-item">양식</a> <a
-						href="cate_cafe.do" class="list-group-item">카페</a> <a
+						href="cate_cafe.do" class="list-group-item">카페 및 디저트</a> <a
 						href="cate_etc.do" class="list-group-item">기타</a>
 
 				</div>
