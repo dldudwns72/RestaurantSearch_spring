@@ -59,7 +59,12 @@
       
 	     <c:choose> 
 	     <c:when test="result1 == 1">
+
             g1 = g1+1;
+            
+            
+	     <c:set var="g1" value='${g1+1}' scope="request"/>
+	     ${g1}
           </c:when>
           <c:when test="result1 == 2">
           	g2 = g2+1;

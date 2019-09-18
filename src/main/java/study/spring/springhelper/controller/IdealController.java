@@ -71,13 +71,48 @@ public class IdealController {
 		int result14 = 0;
 		int result15 = 0;
 		
+		model.addAttribute("g1",g1);
+		model.addAttribute("g2",g2);
+		model.addAttribute("g3",g3);
+		model.addAttribute("g4",g4);
+		model.addAttribute("g5",g5);
+		model.addAttribute("g6",g6);
+		model.addAttribute("g7",g7);
+		model.addAttribute("g8",g8);
+		model.addAttribute("g9",g9);
+		model.addAttribute("g10",g10);
+		model.addAttribute("g11",g11);
+		model.addAttribute("g12",g12);
+		model.addAttribute("g13",g13);
+		model.addAttribute("g14",g14);
+		model.addAttribute("g15",g15);
+		model.addAttribute("g16",g16);
+		
+		model.addAttribute("result1",result1);
+		model.addAttribute("result2",result2);
+		model.addAttribute("result3",result3);
+		model.addAttribute("result4",result4);
+		model.addAttribute("result5",result5);
+		model.addAttribute("result6",result6);
+		model.addAttribute("result7",result7);
+		model.addAttribute("result8",result8);
+		model.addAttribute("result9",result9);
+		model.addAttribute("result10",result10);
+		model.addAttribute("result11",result11);
+		model.addAttribute("result12",result12);
+		model.addAttribute("result13",result13);
+		model.addAttribute("result14",result14);
+		model.addAttribute("result15",result15);
+		
+		model.addAttribute("gamecount",gamecount);
+		
 		
 		String viewPath = "Ideal/ideal_main";
 		return new ModelAndView(viewPath);
 	}
 	
 	
-	@RequestMapping(value = "Ideal/ideal_worldcup.do", method = RequestMethod.GET)
+	@RequestMapping(value = "Ideal/ideal_worldcup.do", method = RequestMethod.POST)
 	public ModelAndView ideal_worldcup(Model model) {
 		
 		
@@ -118,6 +153,41 @@ public class IdealController {
 
 	        int gamecount = webHelper.getInt("gamecount");
 	        
+	        model.addAttribute("g1",g1);
+			model.addAttribute("g2",g2);
+			model.addAttribute("g3",g3);
+			model.addAttribute("g4",g4);
+			model.addAttribute("g5",g5);
+			model.addAttribute("g6",g6);
+			model.addAttribute("g7",g7);
+			model.addAttribute("g8",g8);
+			model.addAttribute("g9",g9);
+			model.addAttribute("g10",g10);
+			model.addAttribute("g11",g11);
+			model.addAttribute("g12",g12);
+			model.addAttribute("g13",g13);
+			model.addAttribute("g14",g14);
+			model.addAttribute("g15",g15);
+			model.addAttribute("g16",g16);
+			
+			model.addAttribute("result1",result1);
+			model.addAttribute("result2",result2);
+			model.addAttribute("result3",result3);
+			model.addAttribute("result4",result4);
+			model.addAttribute("result5",result5);
+			model.addAttribute("result6",result6);
+			model.addAttribute("result7",result7);
+			model.addAttribute("result8",result8);
+			model.addAttribute("result9",result9);
+			model.addAttribute("result10",result10);
+			model.addAttribute("result11",result11);
+			model.addAttribute("result12",result12);
+			model.addAttribute("result13",result13);
+			model.addAttribute("result14",result14);
+			model.addAttribute("result15",result15);
+			
+			model.addAttribute("gamecount",gamecount);
+			
 
 			String viewPath = "Ideal/ideal_worldcup";
 			return new ModelAndView(viewPath);
