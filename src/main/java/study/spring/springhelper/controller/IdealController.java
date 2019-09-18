@@ -24,15 +24,15 @@ public class IdealController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
-	
-	@RequestMapping(value = "/Ideal/header.do", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/Ideal/header.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView header(Model model) {
 		String viewPath = "Ideal/header";
 		return new ModelAndView(viewPath);
 	}
 	
 	
-	@RequestMapping(value = "Ideal/ideal_main.do", method = RequestMethod.GET)
+	@RequestMapping(value = "Ideal/ideal_main.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView ideal_main(Model model) {
 		//초기화
 		int gamecount=0; 

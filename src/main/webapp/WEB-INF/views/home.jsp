@@ -145,7 +145,7 @@
 				<div class="col-lg-4">
 					<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
 						<div class="features-icons-icon d-flex">
-							<a href="${pageContext.request.contextPath}/Random/random.do"><img src="${pageContext.request.contextPath}/assets/img/random.jpg" width="300" height="160"></a>
+							<a href="${pageContext.request.contextPath}/Random/random.do"><img src="${pageContext.request.contextPath}/assets/img/main_random.png" width="300" height="160"></a>
 						</div>
 							<br><br />
 						<h3>랜덤메뉴</h3>
@@ -157,7 +157,7 @@
 				<div class="col-lg-4">
 					<div class="features-icons-item mx-auto mb-0 mb-lg-3">
 						<div class="features-icons-icon d-flex">
-							<a href="rank.jsp"><img src="${pageContext.request.contextPath}/assets/img/ranking.jpg" width="300" height="160"></a>
+							<a href="rank.jsp"><img src="${pageContext.request.contextPath}/assets/img/rank.png" width="300" height="160"></a>
 						</div>
 						<br><br />
 						<h3>맛집랭킹 TOP 10</h3>
