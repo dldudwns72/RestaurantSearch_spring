@@ -63,7 +63,7 @@
       <input type='hidden' name='result14' value='${result14}' />
       <input type='hidden' name='result15' value='${result15}' />
 
-      
+
       <button type="submit">시작</button>
       
    </form>

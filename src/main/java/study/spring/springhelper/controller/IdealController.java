@@ -112,7 +112,7 @@ public class IdealController {
 	}
 	
 	
-	@RequestMapping(value = "Ideal/ideal_worldcup.do", method = RequestMethod.POST)
+	@RequestMapping(value = "Ideal/ideal_worldcup.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView ideal_worldcup(Model model) {
 		
 		

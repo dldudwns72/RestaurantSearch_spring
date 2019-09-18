@@ -10,6 +10,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+
 <link
 	href="${pageContext.request.contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -26,8 +27,11 @@
 		<%@ include file="header.jsp"%>
 	</header>
 	
+	<!-- if문 돌리기 -->
+	<!-- gamecount의 초기값을 main에서 받아와야하는데...안오는것같음? -->
 	
 <c:choose> 
+
  <c:when test=" ${gamecount} == 0">
 
 <h1>Round ${gamecount+1}</h1>
@@ -36,6 +40,7 @@
       <div>
 	      <img src="${pageContext.request.contextPath}/assets/img/1.jpg">
 	      <img src="${pageContext.request.contextPath}/assets/img/2.jpg">
+	      
       </div>
       
       
@@ -473,8 +478,8 @@
      </c:choose>
       
 
-	   <h1>최종 선택 결과 : '${menu}'</h1>
-	   <img src="${pageContext.request.contextPath}/assets/img/'${result15}'.jpg">
+	   <h1>최종 선택 결과 : ${menu}</h1>
+	   <img src="${pageContext.request.contextPath}/assets/img/${result15}.jpg">
 	   
    	</form>
 	</c:when>
