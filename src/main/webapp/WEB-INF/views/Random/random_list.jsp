@@ -46,17 +46,17 @@ table, th, td {
 
 			<tr>
 				<th><a href="random_menu_Kor.do?keyword_kor=${keyword_kor}"><img
-						src="${pageContext.request.contextPath}/assets/img/kit.jpg" width="250" height="250"></a></th>
+						src="${pageContext.request.contextPath}/assets/img/kor.jpg" width="250" height="250"></a></th>
 				<th><a href="random_menu_Jpn.do?keyword_jpn=${keyword_jpn}"><img
-						src="${pageContext.request.contextPath}/assets/img/kit.jpg" width="250" height="250"></a></th>
+						src="${pageContext.request.contextPath}/assets/img/japan.jpg" width="250" height="250"></a></th>
 				<th><a href="random_menu_Chn.do?keyword_chn=${keyword_chn}"><img
-						src="${pageContext.request.contextPath}/assets/img/kit.jpg" width="250" height="250"></a></th>
+						src="${pageContext.request.contextPath}/assets/img/china.jpg" width="250" height="250"></a></th>
 				<th><a href="random_menu_Wtf.do?keyword_wtf=${keyword_wtf}"><img
-						src="${pageContext.request.contextPath}/assets/img/kit.jpg" width="250" height="250"></a></th>
+						src="${pageContext.request.contextPath}/assets/img/pasta.jpg" width="250" height="250"></a></th>
 				<th><a href="random_menu_Cafe.do?keyword_cafe=${keyword_cafe}"><img
-						src="${pageContext.request.contextPath}/assets/img/kit.jpg" width="250" height="250"></a></th>
+						src="${pageContext.request.contextPath}/assets/img/dessert.jpg" width="250" height="250"></a></th>
 				<th><a href="random_menu_Etc.do?keyword_etc=${keyword_etc}"><img
-						src="${pageContext.request.contextPath}/assets/img/kit.jpg" width="250" height="250"></a></th>
+						src="${pageContext.request.contextPath}/assets/img/ve.jpg" width="250" height="250"></a></th>
 			</tr>
 			<% 
  
