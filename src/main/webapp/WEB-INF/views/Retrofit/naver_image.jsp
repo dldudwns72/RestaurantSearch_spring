@@ -12,13 +12,12 @@
 </head>
 <body>
 	<h1>네이버 이미지 검색</h1>
-	<form name="form1" method="get"
+     <form name="form1" method="get"
 		action="${pageContext.request.contextPath}/Retrofit/naver_image.do">
 		<label for="query">검색어: </label>
-		<%--  <input type="search" id="query" name="query" value="${query}" /> --%>
-		<input type = "search" name ="query" id = "query" value = "봉우화로">	
+		<input type = "search" name ="query" id = "query" value = "${query}">	
 		 <input type="submit" value="검색" />
-	</form>
+	</form> 
 	 <c:if test="${img_search !=null || fn:length(img_search.items) > 0}">
 		<hr />
 		<table border="1">

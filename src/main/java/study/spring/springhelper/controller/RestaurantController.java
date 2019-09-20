@@ -17,7 +17,6 @@ import study.spring.springhelper.helper.RetrofitHelper;
 import study.spring.springhelper.helper.WebHelper;
 import study.spring.springhelper.model.Img_Search;
 import study.spring.springhelper.model.Restaurants;
-import study.spring.springhelper.model.Img_Search.Items;
 import study.spring.springhelper.service.ApiNaverSearchService;
 import study.spring.springhelper.service.RestaurantService;
 
@@ -43,6 +42,34 @@ public class RestaurantController {
 		return new ModelAndView(viewPath);
 	}
 
+	@RequestMapping(value = "/Restaurant/img_search.do")
+	public ModelAndView img_search(Model model) {
+		String query = webHelper.getString("query", "");
+		String title = webHelper.getString("title", "");
+
+		Retrofit retrofit = retrofitHelper.getRetrofit(ApiNaverSearchService.BASE_URL);
+
+		ApiNaverSearchService apinaversearchService = retrofit.create(ApiNaverSearchService.class);
+
+		Img_Search img_search = null;
+
+		if (!query.equals("")) {
+			Call<Img_Search> call = apinaversearchService.getImage(query, 1);
+			try {
+				img_search = call.execute().body();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		model.addAttribute("img_search", img_search);
+		model.addAttribute("query", query);
+		model.addAttribute("title", title);
+
+		String viewPath = "Restaurant/img_search";
+		return new ModelAndView(viewPath);
+	}
+
 	@RequestMapping(value = "/Restaurant/search.do", method = RequestMethod.GET)
 	public ModelAndView list(Model model) {
 
@@ -50,13 +77,10 @@ public class RestaurantController {
 
 		// 페이지 번호(기본값 1)
 		int nowPage = webHelper.getInt("page", 1);
-
 		// 전체 게시글 수
 		int totalCount = 0;
-
 		// 한 페이지당 표시할 목록 수
 		int listCount = 9;
-
 		// 한 그룹당 표시할 페이지 번호 수
 		int pageCount = 5;
 
@@ -81,28 +105,45 @@ public class RestaurantController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		
-		Retrofit retrofit = retrofitHelper.getRetrofit(ApiNaverSearchService.BASE_URL);
 
-		ApiNaverSearchService apinaversearchService = retrofit.create(ApiNaverSearchService.class);
+		Restaurants.Items input1 = new Restaurants.Items();
+		Img_Search img_search = null;
+		Img_Search.Items img_search_result = null;
+		/* String query = webHelper.getString("query", ""); */
+		String query = null;
+		String[] thumbnail = null;
 
-		String query = webHelper.getString("query", "");
-		System.out.println(query.toString()+"쿼리출력");
-		
-		
-		Img_Search.Items img_search = null;
+		for (int i = 0; i < output.size(); i++) {
+			// input1 은 output리스트에서 하나씩 꺼내온다. output에는 정보가 들어있고
+			input1 = output.get(i);
+			Retrofit retrofit = retrofitHelper.getRetrofit(ApiNaverSearchService.BASE_URL);
 
-		if (!query.equals("")) {
-			Call<Img_Search.Items> call = apinaversearchService.getImage(query, 1);
-			try {
-				img_search = call.execute().body();
-			} catch (Exception e) {
-				e.printStackTrace();
+			ApiNaverSearchService apinaversearchService = retrofit.create(ApiNaverSearchService.class);
+			System.out.println(input1.getTitle() + "타이틀확인");
+			if (!input1.getTitle().equals("") || !input1.getTitle().equals(null)) {
+				// output의 정보를 가지고 있는 inpu1객체의 title을 검색한다.
+				query = input1.getTitle();
+				Call<Img_Search> call = apinaversearchService.getImage(query, 1);
+				
+				try {
+					// img_search는 output정보가 있는 input1객체의 title에 대한 api 검색한 결과의 정보를 가지고 있다
+					img_search = call.execute().body();
+					img_search_result = img_search.items.get(i);
+					// thumbnail은 img_search_result의 thumbnail 값을 가지고 있다.
+					thumbnail[i] = img_search_result.getThumbnail();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				// img_search_result 는 검색 api 정보를 리스트 형태로 가지고 있는거를 객체 형식으로 가지고 있다.
+
 			}
+
+			System.out.println(thumbnail[i].toString() + "출력");
 		}
-		
+
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("output", output);
+		model.addAttribute("thumbnail", thumbnail);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("query", query);
@@ -127,28 +168,25 @@ public class RestaurantController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-		
+
 		Retrofit retrofit = retrofitHelper.getRetrofit(ApiNaverSearchService.BASE_URL);
 
 		ApiNaverSearchService apinaversearchService = retrofit.create(ApiNaverSearchService.class);
 
 		String query = webHelper.getString("query", "");
-		System.out.println(query.toString()+"쿼리출력");
-		
-		
-		Img_Search.Items img_search = null;
+
+		Img_Search img_search = null;
 
 		if (!query.equals("")) {
-			Call<Img_Search.Items> call = apinaversearchService.getImage(query, 1);
+			Call<Img_Search> call = apinaversearchService.getImage(query, 10);
 			try {
 				img_search = call.execute().body();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-
-		model.addAttribute("img_search",img_search);
-		model.addAttribute("query",query);
+		model.addAttribute("img_search", img_search);
+		model.addAttribute("query", query);
 		model.addAttribute("restNo", restNo);
 		model.addAttribute("output", output);
 

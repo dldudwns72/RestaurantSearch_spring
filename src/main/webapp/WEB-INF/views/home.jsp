@@ -86,6 +86,7 @@
 							<div class="col-12 col-md-9 mb-2 mb-md-0">
 								<input type="text" id = "keyword" name = "keyword" 
 								class="form-control form-control-lg" placeholder="검색창" value="${keyword}"> 
+								<%-- <input type="hidden" name="query" id="query" value = "${query}"/> --%>
 									<%-- <input type = "search" id = "query" name = "query" value =<%=query %>/> --%>
 							</div>
 							<div class="col-12 col-md-3">
