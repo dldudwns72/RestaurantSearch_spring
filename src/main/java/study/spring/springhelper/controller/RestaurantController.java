@@ -138,7 +138,7 @@ public class RestaurantController {
 
 			}
 
-			System.out.println(thumbnail[i].toString() + "출력");
+			//System.out.println(thumbnail[i].toString() + "출력");
 		}
 
 		model.addAttribute("keyword", keyword);

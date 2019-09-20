@@ -78,14 +78,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-9 mx-auto">
-					<h1 class="mb-5"> 테이스티 서울 </h1>
+					<h1 class="mb-5"> Tasty Seoul </h1>
 				</div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 					<form method = "get" action ="${pageContext.request.contextPath}/Restaurant/search.do">
 						<div class="form-row">
 							<div class="col-12 col-md-9 mb-2 mb-md-0">
 								<input type="text" id = "keyword" name = "keyword" 
-								class="form-control form-control-lg" placeholder="메뉴나 가게이름" value="${keyword}"> 
+								class="form-control form-control-lg" placeholder="원하시는 메뉴 혹은 가게이름을 적어주세요." value="${keyword}"> 
 									<%-- <input type = "search" id = "query" name = "query" value =<%=query %>/> --%>
 							</div>
 							<div class="col-12 col-md-3">
