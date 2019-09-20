@@ -39,12 +39,12 @@
 			<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 				<form method="get"
 					action="${pageContext.request.contextPath}/Restaurant/search.do">
-
 					<div class="form-row">
 						<div class="col-12 col-md-9 mb-2 mb-md-0">
 							<input type="text" id="keyword" name="keyword"
 								class="form-control form-control-lg"
 								placeholder="음식점이나 메뉴를 검색해보세요.">
+
 						</div>
 						<div class="col-12 col-md-3">
 							<button type="submit" class="btn btn-block btn-lg btn-primary">검색
@@ -84,12 +84,14 @@
 				<h1>검색 결과</h1>
 				<div class="row">
 
+
 					<c:choose>
 						<c:when test="$output == null || fn:length(output) == 0">
 							<h1>조회결과 없다</h1>
 						</c:when>
 						<c:otherwise>
 							<c:forEach var="item" items="${output}" varStatus="status">
+								<%-- <c:set var="thumbnail" value ="${img_search.items[status.index].thumbnail}" /> --%>
 								<c:set var="restNo" value="${item.restNo}" />
 								<c:set var="title" value="${item.title}" />
 								<c:set var="address" value="${item.address}" />
@@ -98,12 +100,10 @@
 								<c:set var="category" value="${item.category}" />
 								<div class="col-lg-4 col-md-6 mb-4">
 									<div class="card h-100">
-									<form action = "${pageContext.request.contextPath}/Restaurant/search.do">
-									<input type="hidden" name = "query" id="query" value="${title}"> 
-										<a href="${pageContext.request.contextPath}/Restaurant/place_info.do?restNo=${restNo}">
-											<img src="${result}" width="222" height="128">
-										</a>
-									</form>	
+										<%-- <input type="text" id="query" name="query" value="${title}" /> --%>
+											<a href="${pageContext.request.contextPath}/Restaurant/place_info.do?restNo=${restNo}">${title}
+											<img src="${thumbnail}" width="222" height="128">
+											</a> 
 										<%-- <a
 											href="${pageContext.request.contextPath}/Restaurant/place_info.do?restNo=${restNo}">
 											<img src="#" width="222" height="128">
@@ -116,7 +116,7 @@
 													href="${pageContext.request.contextPath}/Restaurant/place_info.do?restNo=${restNo}">${title}</a>
 											</h4>
 											<!-- %telephone -->
-											<h5>${telephone},${result}</h5>
+											<h5>${telephone}</h5>
 											<!-- %address -->
 											<p class="card-text">${address}</p>
 

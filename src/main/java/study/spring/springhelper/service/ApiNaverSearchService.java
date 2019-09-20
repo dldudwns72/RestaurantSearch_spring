@@ -13,6 +13,6 @@ public interface ApiNaverSearchService {
 	//@GET("/v1/search/image.json?query = text&display=display")
 	@GET("/v1/search/image.json")
 
-	Call<Img_Search.Items> getImage(@Query("query") String query, @Query("display") int display);
+	Call<Img_Search> getImage(@Query("query") String query, @Query("display") int display);
 
 }

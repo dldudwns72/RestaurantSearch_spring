@@ -29,10 +29,10 @@ public class RetrofitController {
 
 		String query = webHelper.getString("query", "");
 
-		Img_Search.Items img_search = null;
+		Img_Search img_search = null;
 
 		if (!query.equals("")) {
-			Call<Img_Search.Items> call = apinaversearchService.getImage(query, 10);
+			Call<Img_Search> call = apinaversearchService.getImage(query, 10);
 
 			try {
 				img_search = call.execute().body();
