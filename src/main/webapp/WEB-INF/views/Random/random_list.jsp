@@ -35,7 +35,7 @@ table, th, td {
 				<th>일식</th>
 				<th>중식</th>
 				<th>양식</th>
-				<th>카페</th>
+				<th>카페 및 디저트</th>
 				<th>기타</th>
 			</tr>
 		</thead>

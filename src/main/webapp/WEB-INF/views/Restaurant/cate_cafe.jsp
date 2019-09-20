@@ -69,7 +69,7 @@
 						href="cate_chn.do" class="list-group-item">중식</a> <a
 						href="cate_jpn.do" class="list-group-item">일식</a> <a
 						href="cate_wtf.do" class="list-group-item">양식</a> <a
-						href="cate_cafe.do" class="list-group-item">카페</a> <a
+						href="cate_cafe.do" class="list-group-item">카페 및 디저트</a> <a
 						href="cate_etc.do" class="list-group-item">기타</a>
 
 				</div>
@@ -132,6 +132,8 @@
 				<!-- /.row -->
 
 				<!-- 􏰄페이지번호 􏰄-->
+				<nav aria-label="page navigation example">
+				
 				<c:forEach var="i" begin="${pageData.startPage}"
 					end="${pageData.endPage}" varStatus="status">
 					<c:url value="/Restaurant/cate_cafe.do" var="pageUrl">
@@ -147,7 +149,7 @@
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
-
+</nav>
 				<!-- 다음 페이지 그룹 링크  -->
 				<c:choose>
 					<c:when test="${pageData.nextPage > 0}">

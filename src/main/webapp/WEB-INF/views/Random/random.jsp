@@ -37,10 +37,10 @@
 		<div class="row">
 			<div class="col-md-4 mb-5">
 				<div class="card h-100">
-					<a href="${pageContext.request.contextPath}/Random/ideal_main.do"><img class="card-img-top"
-						src="${pageContext.request.contextPath}/assets/img/cup.jpg" alt="" height=400>
+					<a href="${pageContext.request.contextPath}/Ideal/ideal_main.do"><img class="card-img-top"
+						src="${pageContext.request.contextPath}/assets/img/tournament.png" alt="" height=400>
 						<div class="card-body">
-							<h4 class="card-title" align="center">이상형 월드컵!</h4>
+							<h4 class="card-title" align="center">이상형 월드컵</h4>
 
 						</div>
 				</div>
@@ -61,10 +61,10 @@
 			<div class="col-md-4 mb-5">
 				<div class="card h-100">
 					<a href="${pageContext.request.contextPath}/Random/random_list.do"><img class="card-img-top"
-						src="${pageContext.request.contextPath}/assets/img/cup.jpg" alt="" height=400></a>
+						src="${pageContext.request.contextPath}/assets/img/random.png" alt="" height=400></a>
 					<div class="card-body">
 						<%-- <input type ="hidden" name = "keyword2" value="<%=keyword2 %>"> --%>
-						<h4 class="card-title" align="center">랜덤 메뉴 추천!</h4>
+						<h4 class="card-title" align="center">랜덤 메뉴 추천</h4>
 					</div>
 
 
@@ -73,10 +73,10 @@
 
 			<div class="col-md-4 mb-5">
 				<div class="card h-100">
-					<a href="data.jsp"><img class="card-img-top" src="${pageContext.request.contextPath}/assets/img/cup.jpg"
+					<a href="data.jsp"><img class="card-img-top" src="${pageContext.request.contextPath}/assets/img/data.png"
 						alt="" height=400>
 						<div class="card-body">
-							<h4 class="card-title" align="center">데이터 기반 추천,,</h4>
+							<h4 class="card-title" align="center">데이터 기반 추천</h4>
 						</div>
 				</div>
 			</div>
