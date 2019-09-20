@@ -24,7 +24,7 @@
 
 <!-- Custom styles for this template -->
 <link href="${pageContext.request.contextPath}/assets/css/business-frontpage.css" rel="stylesheet">
-
+	<%@ include file = "header.jsp" %>
 </head>
 
 <body>

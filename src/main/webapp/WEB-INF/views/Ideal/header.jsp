@@ -29,7 +29,7 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-light bg-light static-top">
 		<div class="container">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}">서울지역 맛집</a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}">Tasty Seoul</a>
 			<div class="shop-menu clearfix pull-right">
 				<ul class="nav navbar-nav" style="float: right">
 					<li><a href="register.jsp"><i class="fa fa-user"></i> 회원가입</a></li>
