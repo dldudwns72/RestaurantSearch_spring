@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import study.spring.springhelper.helper.WebHelper;
 import study.spring.springhelper.service.BoardService;
 
 @Controller
@@ -22,6 +23,9 @@ public class BoardController {
  
     @Autowired
     BoardService boardService;
+    
+    @Autowired
+    WebHelper webHelper;
  
     //게시글 리스트 조회
     @RequestMapping(value = "/Board/board/list")
@@ -69,7 +73,7 @@ public class BoardController {
     }
  
     //게시글 상세 보기
-    @RequestMapping(value = "/board/view")
+    @RequestMapping(value = "Board/board/view")
     public String boardView(@RequestParam Map<String, Object> paramMap, Model model) {
  
         model.addAttribute("replyList", boardService.getReplyList(paramMap));
@@ -104,13 +108,13 @@ public class BoardController {
                 }
             }
         }else{
-            return "redirect:/board/list";
+            return "redirect:board/list";
         }
  
     }
  
     //AJAX 호출 (게시글 등록, 수정)
-    @RequestMapping(value="/board/save", method=RequestMethod.POST)
+    @RequestMapping(value="Board/board/save", method=RequestMethod.POST)
     @ResponseBody
     public Object boardSave(@RequestParam Map<String, Object> paramMap) {
  
@@ -138,7 +142,7 @@ public class BoardController {
     }
  
     //AJAX 호출 (게시글 삭제)
-    @RequestMapping(value="/board/del", method=RequestMethod.POST)
+    @RequestMapping(value="Board/board/del", method=RequestMethod.POST)
     @ResponseBody
     public Object boardDel(@RequestParam Map<String, Object> paramMap) {
  
@@ -165,7 +169,7 @@ public class BoardController {
     }
  
     //AJAX 호출 (게시글 패스워드 확인)
-    @RequestMapping(value="/board/check", method=RequestMethod.POST)
+    @RequestMapping(value="Board/board/check", method=RequestMethod.POST)
     @ResponseBody
     public Object boardCheck(@RequestParam Map<String, Object> paramMap) {
  
@@ -192,7 +196,7 @@ public class BoardController {
     }
  
     //AJAX 호출 (댓글 등록)
-    @RequestMapping(value="/board/reply/save", method=RequestMethod.POST)
+    @RequestMapping(value="Board/board/reply/save", method=RequestMethod.POST)
     @ResponseBody
     public Object boardReplySave(@RequestParam Map<String, Object> paramMap) {
  
@@ -222,7 +226,7 @@ public class BoardController {
     }
  
     //AJAX 호출 (댓글 삭제)
-    @RequestMapping(value="/board/reply/del", method=RequestMethod.POST)
+    @RequestMapping(value="Board/board/reply/del", method=RequestMethod.POST)
     @ResponseBody
     public Object boardReplyDel(@RequestParam Map<String, Object> paramMap) {
  
@@ -249,7 +253,7 @@ public class BoardController {
     }
  
     //AJAX 호출 (댓글 패스워드 확인)
-    @RequestMapping(value="/board/reply/check", method=RequestMethod.POST)
+    @RequestMapping(value="Board/board/reply/check", method=RequestMethod.POST)
     @ResponseBody
     public Object boardReplyCheck(@RequestParam Map<String, Object> paramMap) {
  
@@ -277,7 +281,7 @@ public class BoardController {
     }
  
     //AJAX 호출 (댓글 수정)
-    @RequestMapping(value="/board/reply/update", method=RequestMethod.POST)
+    @RequestMapping(value="Borad/board/reply/update", method=RequestMethod.POST)
     @ResponseBody
     public Object boardReplyUpdate(@RequestParam Map<String, Object> paramMap) {
  

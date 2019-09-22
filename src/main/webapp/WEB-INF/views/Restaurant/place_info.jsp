@@ -98,7 +98,7 @@
 
 			<div class="col-lg-4">
 				<input type = "hidden" name = "query" id = "query" value="${output.title}"/> 
-				<img src="${img_search.getThumbnail()}" width="350" height="300">
+				<img src="${thumbnail}" width="350" height="300">
 			</div>
 
 			<div class="col-lg-4">
@@ -123,9 +123,7 @@
 						<hr />
 						<li><h6 class="card-text">카테고리 :${output.category}</h6></li>
 						<hr />
-						<c:url value="${output.link}" var="link">
-						</c:url>
-						<li><h6 class="card-text">링크 : ${link}</h6></li>
+						<li><h6 class="card-text">링크 : ${output.link}</h6></li>
 
 						<hr />
 

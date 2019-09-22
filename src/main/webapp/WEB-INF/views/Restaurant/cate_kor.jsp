@@ -94,9 +94,8 @@
 								<div class="col-lg-4 col-md-6 mb-4">
 									<!-- <form method = "get" action = "cate-Search.jsp"> -->
 									<div class="card h-100">
-										<a
-											href="${pageContext.request.contextPath}/Restaurant/place_info.do">
-											<img src="#" width="222" height="128">
+										<a	href="${pageContext.request.contextPath}/Restaurant/place_info.do?restNo=${restNo}">
+											<img src="${thumbnail[status.index]}" width="222" height="128">
 										</a>
 										<div class="card-body">
 											<h4 class="card-title">

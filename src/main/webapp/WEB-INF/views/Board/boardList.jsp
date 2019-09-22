@@ -65,12 +65,12 @@
                  
                 $("a[name='subject']").click(function(){
                      
-                    location.href = "/board/view?id="+$(this).attr("content_id");
+                    location.href = "Board/board/view?id="+$(this).attr("content_id");
                      
                 });
                  
                 $("#write").click(function(){
-                    location.href = "/board/edit";
+                    location.href = "Board/board/edit";
                 });
                                  
                 $(document).on("click","button[name='page_move']",function(){
@@ -149,16 +149,4 @@
             </div>
         </form>
     </body>
-</html><%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
 </html>

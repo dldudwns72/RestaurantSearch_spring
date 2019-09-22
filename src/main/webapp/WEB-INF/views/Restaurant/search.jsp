@@ -101,8 +101,8 @@
 								<div class="col-lg-4 col-md-6 mb-4">
 									<div class="card h-100">
 										<%-- <input type="text" id="query" name="query" value="${title}" /> --%>
-											<a href="${pageContext.request.contextPath}/Restaurant/place_info.do?restNo=${restNo}">${title}
-											<img src="${thumbnail}" width="222" height="128">
+											<a href="${pageContext.request.contextPath}/Restaurant/place_info.do?restNo=${restNo}">
+											<img src="${thumbnail[status.index]}" width="222" height="128">
 											</a> 
 										<%-- <a
 											href="${pageContext.request.contextPath}/Restaurant/place_info.do?restNo=${restNo}">
