@@ -19,6 +19,38 @@
 <link
 	href="${pageContext.request.contextPath}/assets/css/shop-homepage.css"
 	rel="stylesheet">
+	
+	
+	<style>
+        #button2{
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            margin-right:-4px;
+            width:90px;
+            height:40px;
+        }
+        #button2{
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;    
+            margin-left:-3px;
+              width:90px;
+            height:40px;
+        }
+        #btn_group button{
+            border: 1px solid skyblue;
+            background-color: rgba(0,0,0,0);
+            color: skyblue;
+            padding: 5px;
+              width:90px;
+            height:40px;
+        }
+        #btn_group button:hover{
+            color:white;
+            background-color: skyblue;
+            width:90px;
+            height:40px;
+        }
+</style>
 </head>
 <body>
 
@@ -63,9 +95,9 @@
       <input type='hidden' name='result14' value='${result14}' />
       <input type='hidden' name='result15' value='${result15}' />
 
-
-      <button type="submit">시작</button>
-      
+    <div id="btn_group">
+      <button id="button2" type="submit">시작</button>
+      </div>
    </form>
    
    <footer>

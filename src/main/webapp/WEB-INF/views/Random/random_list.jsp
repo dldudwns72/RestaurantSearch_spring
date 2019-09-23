@@ -24,6 +24,11 @@ table, th, td {
 </head>
 <body>
 
+
+ <%--  <header>
+	<%@ include file="header.jsp"%>
+  </header>  --%>
+
 	<table border="1">
 
 		<caption>
@@ -58,16 +63,28 @@ table, th, td {
 				<th><a href="random_menu_Etc.do?keyword_etc=${keyword_etc}"><img
 						src="${pageContext.request.contextPath}/assets/img/ve.jpg" width="250" height="250"></a></th>
 			</tr>
+			
+			
+		</tbody>
+		</table>
+		
 			<% 
  
         %>
+        
+      
 
-			<tr>
+			<!-- <tr>
 
 				<td rowspan="2"></td>
-			</tr>
+			</tr> -->
 
 
-		</tbody>
+		
+	<%-- 	
+	 <footer>
+		<%@ include file="footer.jsp"%>
+	</footer>  --%>
+	
 </body>
 </html>

@@ -30,7 +30,7 @@
 
 <header>
 		<%@ include file="header.jsp"%>
-	</header>
+</header>
 
 
 <br/>
@@ -58,18 +58,7 @@
 				</div>
 			</div>
 
-			<%-- <div class="col-md-4 mb-5">
-				<div class="card h-100">
-					<a href="random_menu.jsp?keyword2=<%=keyword2%>"><img class="card-img-top" src="img/cup.jpg" alt="" height=400></a>
-					<div class="card-body">
-						<input type ="hidden" name = "keyword2" value="<%=keyword2 %>">
-						<h4 class="card-title" align="center">랜덤 메뉴 추천!</h4>
-					</div>
-					
-					
-				</div>
-			</div> --%>
-
+		
 			<div class="col-md-4 mb-5">
 				<div class="card h-100">
 					<a href="${pageContext.request.contextPath}/Random/random_list.do"><img class="card-img-top"

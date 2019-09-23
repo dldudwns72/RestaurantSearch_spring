@@ -28,6 +28,29 @@
 	}
 </script>
 
+<style>
+        #test_btn1{
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            margin-right:-4px;
+        }
+        #test_btn2{
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;    
+            margin-left:-3px;
+        }
+        #btn_group button{
+            border: 1px solid skyblue;
+            background-color: rgba(0,0,0,0);
+            color: skyblue;
+            padding: 5px;
+        }
+        #btn_group button:hover{
+            color:white;
+            background-color: skyblue;
+        }
+</style>
+
 
 <!-- Bootstrap core CSS -->
 <link
@@ -38,6 +61,7 @@
 <link
 	href="${pageContext.request.contextPath}/assets/css/shop-homepage.css"
 	rel="stylesheet">
+	</head>
 <body>
 	<header>
 		<%@ include file="header.jsp"%>
