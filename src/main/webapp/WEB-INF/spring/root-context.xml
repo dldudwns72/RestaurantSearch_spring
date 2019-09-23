@@ -92,11 +92,8 @@
         <!-- 데이터베이스 계정명 -->
         <prop key="dbUsername">root</prop>
         <!-- 데이터베이스 비밀번호 -->
-<<<<<<< HEAD
-        <prop key="dbPassword">8837</prop>
-=======
-        <prop key="dbPassword">1234</prop>
->>>>>>> 53cd5d0f1b26845bde776c64b3cca3c3c1a2fb9b
+        <prop key="dbPassword">1124</prop>
+
         <!-- Mapper 파일들이 위치할 '/src/main/resources' 하위의 경로  -->
         <prop key="mapperPath">/mappers/**/*Mapper.xml</prop>
     </util:properties>

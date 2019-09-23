@@ -139,11 +139,9 @@ public class RestaurantController {
 					e.printStackTrace();
 				}
 			}
-<<<<<<< HEAD
 
 			//System.out.println(thumbnail[i].toString() + "출력");
-=======
->>>>>>> 53cd5d0f1b26845bde776c64b3cca3c3c1a2fb9b
+
 		}
 
 		model.addAttribute("keyword", keyword);
