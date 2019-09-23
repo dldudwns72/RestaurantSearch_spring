@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: ezen
 Build-Jdk: 1.8.0_201
+=======
+Built-By: colse
+Build-Jdk: 1.8.0_211
+>>>>>>> 53cd5d0f1b26845bde776c64b3cca3c3c1a2fb9b
 Created-By: Maven Integration for Eclipse
 

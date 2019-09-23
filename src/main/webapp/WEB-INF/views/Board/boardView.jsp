@@ -57,7 +57,7 @@
                     
                     //ajax 호출
                     $.ajax({
-                        url            :    "/board/reply/save",
+                        url            :    "Board/board/reply/save",
                         dataType    :    "json",
                         contentType :    "application/x-www-form-urlencoded; charset=UTF-8",
                         type         :    "post",
@@ -135,7 +135,7 @@
                     
                     //ajax 호출
                     $.ajax({
-                        url            :    "/board/reply/del",
+                        url            :    "Board/board/reply/del",
                         dataType    :    "json",
                         contentType :    "application/x-www-form-urlencoded; charset=UTF-8",
                         type         :    "post",
@@ -201,7 +201,7 @@
                      
                     //ajax 호출
                     $.ajax({
-                        url         :   "/board/reply/check",
+                        url         :   "Board/board/reply/check",
                         dataType    :   "json",
                         contentType :   "application/x-www-form-urlencoded; charset=UTF-8",
                         type        :   "post",
@@ -377,7 +377,7 @@
                     };
  
                     $.ajax({
-                        url         :   "/board/reply/update",
+                        url         :   "Board/board/reply/update",
                         dataType    :   "json",
                         contentType :   "application/x-www-form-urlencoded; charset=UTF-8",
                         type        :   "post",
@@ -550,7 +550,7 @@
                     
                     //ajax 호출
                     $.ajax({
-                        url            :    "/board/reply/save",
+                        url            :    "Board/board/reply/save",
                         dataType    :    "json",
                         contentType :    "application/x-www-form-urlencoded; charset=UTF-8",
                         type         :    "post",
@@ -625,7 +625,7 @@
                                         
                     //ajax 호출
                     $.ajax({
-                        url            :    "/board/check",
+                        url            :    "Board/board/check",
                         dataType    :    "json",
                         contentType :    "application/x-www-form-urlencoded; charset=UTF-8",
                         type         :    "post",
@@ -667,7 +667,7 @@
                                         
                     //ajax 호출
                     $.ajax({
-                        url            :    "/board/del",
+                        url            :    "Board/board/del",
                         dataType    :    "json",
                         contentType :    "application/x-www-form-urlencoded; charset=UTF-8",
                         type         :    "post",
@@ -679,7 +679,7 @@
                                 alert(retVal.message);
                             }else{
                                 alert("삭제 되었습니다.");
-                                location.href = "/board/list";
+                                location.href = "Board/board/list";
                             }
                             
                         },

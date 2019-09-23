@@ -97,7 +97,7 @@
 									<div class="card h-100">
 										<a
 											href="${pageContext.request.contextPath}/Restaurant/place_info.do">
-											<img src="#" width="222" height="128">
+											<img src="${thumbnail[status.index]}" width="222" height="128">
 										</a>
 										<div class="card-body">
 											<h4 class="card-title">
