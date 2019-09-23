@@ -153,6 +153,7 @@ public class IdealController {
 
 	        int gamecount = webHelper.getInt("gamecount");
 	        
+	        
 	        model.addAttribute("g1",g1);
 			model.addAttribute("g2",g2);
 			model.addAttribute("g3",g3);

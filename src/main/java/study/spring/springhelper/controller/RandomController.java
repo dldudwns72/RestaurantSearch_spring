@@ -356,7 +356,7 @@ public class RandomController {
 
 			output = restaurantService.getRestaurantList_Etc(input);
 
-		} catch (Exception e) {
+		}catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
