@@ -186,7 +186,7 @@
       <div id="btn_group">
       <button id="button2" type="submit">다음단계</button>
       </div>
-      
+      </div>
       <c:choose>
       <c:when test="${gamecount eq 2}">
          <c:choose>
@@ -330,6 +330,8 @@
      <div id="btn_group">
       <button id="button2" type="submit">다음단계</button>
       </div>
+      </div>
+      
  <c:choose>
  
     <c:when test="${gamecount eq 8}">
