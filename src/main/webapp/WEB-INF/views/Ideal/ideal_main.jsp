@@ -19,6 +19,9 @@
 <link
 	href="${pageContext.request.contextPath}/assets/css/shop-homepage.css"
 	rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="fun-btn.css" media="screen" />
+	
 </head>
 <body>
 
@@ -64,8 +67,14 @@
       <input type='hidden' name='result15' value='${result15}' />
 
 
-      <button type="submit">시작</button>
       
+      <div class="page">
+
+  		<button class="fun-btn">press for fun</button>
+
+		</div>
+		
+		
    </form>
    
    <footer>
