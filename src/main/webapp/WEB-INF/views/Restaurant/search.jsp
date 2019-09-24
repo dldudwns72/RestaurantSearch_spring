@@ -24,6 +24,8 @@
 	rel="stylesheet">
 
 </head>
+
+
 <body>
 	<header>
 		<%@ include file="header.jsp"%>

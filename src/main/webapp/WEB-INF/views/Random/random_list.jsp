@@ -43,7 +43,6 @@ table, th, td {
 		<tbody>
 
 
-
 			<tr>
 				<th><a href="random_menu_Kor.do?keyword_kor=${keyword_kor}"><img
 						src="${pageContext.request.contextPath}/assets/img/kit.jpg" width="250" height="250"></a></th>
