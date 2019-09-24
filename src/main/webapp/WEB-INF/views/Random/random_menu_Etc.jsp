@@ -111,7 +111,7 @@ table, th, td {
 								<!-- <form method = "get" action = "cate-Search.jsp"> -->
 								<div class="card h-100">
 									<a href="place_info.do?restNo=${restNo}"> <img
-										src="${pageContext.request.contextPath}/assets/img/kit.jpg" width="350" height="148"></a>
+										src="${thumbnail[status.index]}" width="350" height="148"></a>
 									<div class="card-body">
 										<h4 class="card-title">
 

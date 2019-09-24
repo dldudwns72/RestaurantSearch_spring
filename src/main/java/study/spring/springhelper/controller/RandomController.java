@@ -3,6 +3,8 @@ package study.spring.springhelper.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -11,9 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import retrofit2.Call;
+import retrofit2.Retrofit;
 import study.spring.springhelper.helper.PageData;
+import study.spring.springhelper.helper.RetrofitHelper;
 import study.spring.springhelper.helper.WebHelper;
+import study.spring.springhelper.model.Img_Search;
 import study.spring.springhelper.model.Restaurants;
+import study.spring.springhelper.service.ApiNaverSearchService;
 import study.spring.springhelper.service.RestaurantService;
 
 @Controller
@@ -23,6 +30,9 @@ public class RandomController {
 
 	@Autowired
 	RestaurantService restaurantService;
+	
+	@Autowired
+	RetrofitHelper retrofitHelper;
 
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
@@ -123,7 +133,7 @@ public class RandomController {
 	}
 
 	@RequestMapping(value = "Random/random_menu_Kor.do", method = RequestMethod.GET)
-	public ModelAndView random_kor(Model model) {
+	public ModelAndView random_kor(Model model, HttpServletRequest request) {
 		String keyword_kor = webHelper.getString("keyword_kor", "");
 
 		Restaurants.Items input = new Restaurants.Items();
@@ -155,6 +165,40 @@ public class RandomController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
+		Restaurants.Items input1 = new Restaurants.Items();
+		Img_Search img_search = null;
+		Img_Search.Items img_search_result = null;
+
+		String[] thumbnail = new String[output.size()];
+		for (int i = 0; i < output.size(); i++) {
+			// input1 은 output리스트에서 하나씩 꺼내온다. output에는 정보가 들어있고
+			input1 = output.get(i);
+			Retrofit retrofit = retrofitHelper.getRetrofit(ApiNaverSearchService.BASE_URL);
+
+			ApiNaverSearchService apinaversearchService = retrofit.create(ApiNaverSearchService.class);
+
+			if (!input1.getTitle().equals("") || !input1.getTitle().equals(null)) {
+				// output의 정보를 가지고 있는 inpu1객체의 title을 검색한다.
+				Call<Img_Search> call = apinaversearchService.getImage(input1.getTitle(), 1);
+
+				try {
+					// img_search는 output정보가 있는 input1객체의 title에 대한 api 검색한 결과의 정보를 가지고 있다
+					img_search = call.execute().body();
+
+					if (img_search.items.size() > 0) {
+						img_search_result = img_search.items.get(0);
+						// thumbnail은 img_search_result의 thumbnail 값을 가지고 있다.
+						thumbnail[i] = img_search_result.getThumbnail();
+					} else {
+						thumbnail[i] = request.getContextPath() + "/assets/img/noimg.png";
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		model.addAttribute("thumbnail",thumbnail);
 		model.addAttribute("keyword_kor",keyword_kor);
 		model.addAttribute("output",output);
 
@@ -164,7 +208,7 @@ public class RandomController {
 	}
 	
 	@RequestMapping(value = "Random/random_menu_Chn.do", method = RequestMethod.GET)
-	public ModelAndView random_chn(Model model) {
+	public ModelAndView random_chn(Model model,HttpServletRequest request) {
 		String keyword_chn = webHelper.getString("keyword_chn", "");
 
 		Restaurants.Items input = new Restaurants.Items();
@@ -195,7 +239,40 @@ public class RandomController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		Restaurants.Items input1 = new Restaurants.Items();
+		Img_Search img_search = null;
+		Img_Search.Items img_search_result = null;
+
+		String[] thumbnail = new String[output.size()];
+		for (int i = 0; i < output.size(); i++) {
+			// input1 은 output리스트에서 하나씩 꺼내온다. output에는 정보가 들어있고
+			input1 = output.get(i);
+			Retrofit retrofit = retrofitHelper.getRetrofit(ApiNaverSearchService.BASE_URL);
+
+			ApiNaverSearchService apinaversearchService = retrofit.create(ApiNaverSearchService.class);
+
+			if (!input1.getTitle().equals("") || !input1.getTitle().equals(null)) {
+				// output의 정보를 가지고 있는 inpu1객체의 title을 검색한다.
+				Call<Img_Search> call = apinaversearchService.getImage(input1.getTitle(), 1);
+
+				try {
+					// img_search는 output정보가 있는 input1객체의 title에 대한 api 검색한 결과의 정보를 가지고 있다
+					img_search = call.execute().body();
+
+					if (img_search.items.size() > 0) {
+						img_search_result = img_search.items.get(0);
+						// thumbnail은 img_search_result의 thumbnail 값을 가지고 있다.
+						thumbnail[i] = img_search_result.getThumbnail();
+					} else {
+						thumbnail[i] = request.getContextPath() + "/assets/img/noimg.png";
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		
+		model.addAttribute("thumbnail",thumbnail);
 		model.addAttribute("keyword_chn",keyword_chn);
 		model.addAttribute("output",output);
 
@@ -205,7 +282,7 @@ public class RandomController {
 	}
 	
 	@RequestMapping(value = "Random/random_menu_Jpn.do", method = RequestMethod.GET)
-	public ModelAndView random_jpn(Model model) {
+	public ModelAndView random_jpn(Model model,HttpServletRequest request) {
 		String keyword_jpn = webHelper.getString("keyword_jpn", "");
 
 		Restaurants.Items input = new Restaurants.Items();
@@ -236,7 +313,40 @@ public class RandomController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		Restaurants.Items input1 = new Restaurants.Items();
+		Img_Search img_search = null;
+		Img_Search.Items img_search_result = null;
+
+		String[] thumbnail = new String[output.size()];
+		for (int i = 0; i < output.size(); i++) {
+			// input1 은 output리스트에서 하나씩 꺼내온다. output에는 정보가 들어있고
+			input1 = output.get(i);
+			Retrofit retrofit = retrofitHelper.getRetrofit(ApiNaverSearchService.BASE_URL);
+
+			ApiNaverSearchService apinaversearchService = retrofit.create(ApiNaverSearchService.class);
+
+			if (!input1.getTitle().equals("") || !input1.getTitle().equals(null)) {
+				// output의 정보를 가지고 있는 inpu1객체의 title을 검색한다.
+				Call<Img_Search> call = apinaversearchService.getImage(input1.getTitle(), 1);
+
+				try {
+					// img_search는 output정보가 있는 input1객체의 title에 대한 api 검색한 결과의 정보를 가지고 있다
+					img_search = call.execute().body();
+
+					if (img_search.items.size() > 0) {
+						img_search_result = img_search.items.get(0);
+						// thumbnail은 img_search_result의 thumbnail 값을 가지고 있다.
+						thumbnail[i] = img_search_result.getThumbnail();
+					} else {
+						thumbnail[i] = request.getContextPath() + "/assets/img/noimg.png";
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		
+		model.addAttribute("thumbnail",thumbnail);
 		model.addAttribute("keyword_jpn",keyword_jpn);
 		model.addAttribute("output",output);
 
@@ -246,7 +356,7 @@ public class RandomController {
 	}
 	
 	@RequestMapping(value = "Random/random_menu_Wtf.do", method = RequestMethod.GET)
-	public ModelAndView random_wtf(Model model) {
+	public ModelAndView random_wtf(Model model,HttpServletRequest request) {
 		String keyword_wtf = webHelper.getString("keyword_wtf", "");
 
 		Restaurants.Items input = new Restaurants.Items();
@@ -277,8 +387,41 @@ public class RandomController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		Restaurants.Items input1 = new Restaurants.Items();
+		Img_Search img_search = null;
+		Img_Search.Items img_search_result = null;
+
+		String[] thumbnail = new String[output.size()];
+		for (int i = 0; i < output.size(); i++) {
+			// input1 은 output리스트에서 하나씩 꺼내온다. output에는 정보가 들어있고
+			input1 = output.get(i);
+			Retrofit retrofit = retrofitHelper.getRetrofit(ApiNaverSearchService.BASE_URL);
+
+			ApiNaverSearchService apinaversearchService = retrofit.create(ApiNaverSearchService.class);
+
+			if (!input1.getTitle().equals("") || !input1.getTitle().equals(null)) {
+				// output의 정보를 가지고 있는 inpu1객체의 title을 검색한다.
+				Call<Img_Search> call = apinaversearchService.getImage(input1.getTitle(), 1);
+
+				try {
+					// img_search는 output정보가 있는 input1객체의 title에 대한 api 검색한 결과의 정보를 가지고 있다
+					img_search = call.execute().body();
+
+					if (img_search.items.size() > 0) {
+						img_search_result = img_search.items.get(0);
+						// thumbnail은 img_search_result의 thumbnail 값을 가지고 있다.
+						thumbnail[i] = img_search_result.getThumbnail();
+					} else {
+						thumbnail[i] = request.getContextPath() + "/assets/img/noimg.png";
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		
-		model.addAttribute("keyword_Wtf",keyword_wtf);
+		model.addAttribute("thumbnail",thumbnail);
+		model.addAttribute("keyword_wtf",keyword_wtf);
 		model.addAttribute("output",output);
 
 		String viewPath = "Random/random_menu_Wtf";
@@ -287,7 +430,7 @@ public class RandomController {
 	}
 	
 	@RequestMapping(value = "Random/random_menu_Cafe.do", method = RequestMethod.GET)
-	public ModelAndView random_cafe(Model model) {
+	public ModelAndView random_cafe(Model model,HttpServletRequest request) {
 		String keyword_cafe = webHelper.getString("keyword_cafe", "");
 
 		Restaurants.Items input = new Restaurants.Items();
@@ -319,6 +462,41 @@ public class RandomController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
+		Restaurants.Items input1 = new Restaurants.Items();
+		Img_Search img_search = null;
+		Img_Search.Items img_search_result = null;
+
+		String[] thumbnail = new String[output.size()];
+		for (int i = 0; i < output.size(); i++) {
+			// input1 은 output리스트에서 하나씩 꺼내온다. output에는 정보가 들어있고
+			input1 = output.get(i);
+			Retrofit retrofit = retrofitHelper.getRetrofit(ApiNaverSearchService.BASE_URL);
+
+			ApiNaverSearchService apinaversearchService = retrofit.create(ApiNaverSearchService.class);
+
+			if (!input1.getTitle().equals("") || !input1.getTitle().equals(null)) {
+				// output의 정보를 가지고 있는 inpu1객체의 title을 검색한다.
+				Call<Img_Search> call = apinaversearchService.getImage(input1.getTitle(), 1);
+
+				try {
+					// img_search는 output정보가 있는 input1객체의 title에 대한 api 검색한 결과의 정보를 가지고 있다
+					img_search = call.execute().body();
+
+					if (img_search.items.size() > 0) {
+						img_search_result = img_search.items.get(0);
+						// thumbnail은 img_search_result의 thumbnail 값을 가지고 있다.
+						thumbnail[i] = img_search_result.getThumbnail();
+					} else {
+						thumbnail[i] = request.getContextPath() + "/assets/img/noimg.png";
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		model.addAttribute("thumbnail",thumbnail);
+		
 		model.addAttribute("keyword_cafe",keyword_cafe);
 		model.addAttribute("output",output);
 
@@ -328,7 +506,7 @@ public class RandomController {
 	}
 	
 	@RequestMapping(value = "Random/random_menu_Etc.do", method = RequestMethod.GET)
-	public ModelAndView random_etc(Model model) {
+	public ModelAndView random_etc(Model model,HttpServletRequest request) {
 		String keyword_etc = webHelper.getString("keyword_Etc", "");
 
 		Restaurants.Items input = new Restaurants.Items();
@@ -359,6 +537,41 @@ public class RandomController {
 		}catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		
+		Restaurants.Items input1 = new Restaurants.Items();
+		Img_Search img_search = null;
+		Img_Search.Items img_search_result = null;
+
+		String[] thumbnail = new String[output.size()];
+		for (int i = 0; i < output.size(); i++) {
+			// input1 은 output리스트에서 하나씩 꺼내온다. output에는 정보가 들어있고
+			input1 = output.get(i);
+			Retrofit retrofit = retrofitHelper.getRetrofit(ApiNaverSearchService.BASE_URL);
+
+			ApiNaverSearchService apinaversearchService = retrofit.create(ApiNaverSearchService.class);
+
+			if (!input1.getTitle().equals("") || !input1.getTitle().equals(null)) {
+				// output의 정보를 가지고 있는 inpu1객체의 title을 검색한다.
+				Call<Img_Search> call = apinaversearchService.getImage(input1.getTitle(), 1);
+
+				try {
+					// img_search는 output정보가 있는 input1객체의 title에 대한 api 검색한 결과의 정보를 가지고 있다
+					img_search = call.execute().body();
+
+					if (img_search.items.size() > 0) {
+						img_search_result = img_search.items.get(0);
+						// thumbnail은 img_search_result의 thumbnail 값을 가지고 있다.
+						thumbnail[i] = img_search_result.getThumbnail();
+					} else {
+						thumbnail[i] = request.getContextPath() + "/assets/img/noimg.png";
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		model.addAttribute("thumbnail",thumbnail);
 		
 		model.addAttribute("keyword_etc",keyword_etc);
 		model.addAttribute("output",output);

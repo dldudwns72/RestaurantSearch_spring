@@ -26,6 +26,10 @@
 				"width=400, height=300, left=100, top=50");
 
 	}
+	
+	function open2(url){
+		window.open(url,"mywin");
+	}
 </script>
 
 <style>
@@ -147,7 +151,7 @@
 						<hr />
 						<li><h6 class="card-text">카테고리 :${output.category}</h6></li>
 						<hr />
-						<li><h6 class="card-text">링크 : ${output.link}</h6></li>
+						<li><h6 class="card-text">링크 : <a href="${output.link}" onclick = "open2(${output.link}); return false;">${output.link}</a></h6></li>
 
 						<hr />
 
