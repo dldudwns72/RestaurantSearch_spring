@@ -23,7 +23,7 @@
 	rel="stylesheet" type="text/css">
 
 <!-- Custom styles for this template -->
-<link href="css/landing-page.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/css/landing-page.min.css" rel="stylesheet">
 </head>
 <body>
 	<!-- Navigation -->

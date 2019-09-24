@@ -35,7 +35,7 @@ public class IdealController {
 	@RequestMapping(value = "Ideal/ideal_main.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView ideal_main(Model model) {
 		//초기화
-		int gamecount=0; 
+		int gamecount= 0; 
 
 		int g1 = 0;
 		int g2 = 0;
@@ -151,8 +151,188 @@ public class IdealController {
 	      int result15 = webHelper.getInt("result15");
 
 
-	        int gamecount = webHelper.getInt("gamecount");
+	      int gamecount = webHelper.getInt("gamecount");
 	        
+	        
+	        if(gamecount == 1){ 
+	        	if ( result1 == 1) {
+	        	  g1 = g1+1;
+	        	} else if(result1 == 2) {
+	        	  g2 = g2+1;
+	        	}
+	        	
+	        } else if(gamecount == 2){
+
+	           if (result2 == 3) {
+	              g3 = g3+1;
+	           }  else if(result2 == 4) {
+	              g4 = g4+1;
+	           }
+	           
+	        } else if(gamecount == 3){   
+	           if (result3 == 5) {
+	              g5 = g5+1;
+	           } else if(result3 == 6) {
+	              g6 = g6+1;
+	           }
+	           
+	        } else if(gamecount == 4){   
+	           if (result4 == 7) {
+	              g7 = g7+1;
+	           } else if(result4 == 8) {
+	              g8 = g8+1;
+	           }
+	           
+	        } else if(gamecount == 5){
+	           if (result5 == 9) {
+	              g9 = g9+1;
+	           } else if(result5 == 10) {
+	              g10 = g10+1;
+	           }
+	           
+	        } else if(gamecount == 6){
+	           if (result6 == 11) {
+	              g11 = g11+1;
+	           } else if( result6 == 12){
+	              g12 = g12+1;
+	           }
+	           
+	        } else if(gamecount == 7){
+	           if (result7 == 13) {
+	              g13 = g13+1;
+	           } else if (result7 ==14) {
+	              g14 = g14+1;
+	           }
+	          
+	        } else if(gamecount == 8){
+	           if (result8 == 15) {
+	              g15 = g15+1;
+	           } else if (result8 == 16) {
+	              g16 = g16+1;
+	           }
+	           
+	        } else if(gamecount == 9){
+	        	   if (result9 == 1) {
+	        	      g1 = g1+1;
+	        	   } else if (result9 == 2) {
+	        	      g2 = g2+1;
+	        	   } else if (result9 == 3) {
+	        		  g3 = g3+1;
+	        	   } else if (result9 == 4) {
+	        		  g4 = g4+1;
+	        	   }
+	        		
+	         }  else if(gamecount == 10){
+	        	   if (result10 == 5) {
+	        		      g5 = g5+1;
+	        		   } else if (result10 == 6) {
+	        		      g6 = g6+1;
+	        		   } else if (result10 == 7) {
+	        			  g7 = g7+1;
+	        		   } else if (result10 == 8) {
+	        			  g8 = g8+1;
+	        		   }
+	        			
+	         }   else if(gamecount == 11){
+	        	   if (result11 == 9) {
+	        		      g9 = g9+1;
+	        		   } else if (result11 == 10) {
+	        		      g10 = g10+1;
+	        		   } else if (result11 == 11) {
+	        			  g11 = g11+1;
+	        		   } else if (result11 == 12) {
+	        			  g12 = g12+1;
+	        		   }
+	        			
+	        }  else if(gamecount == 12){
+	        	   if (result12 == 13) {
+	        		      g13 = g13+1;
+	        		   } else if (result12 == 14) {
+	        		      g14 = g14+1;
+	        		   } else if (result12 == 15) {
+	        			  g15 = g15+1;
+	        		   } else if (result12 == 16) {
+	        			  g16 = g16+1;
+	        		   }
+	        			
+	        } else if(gamecount == 13){
+	        	   if (result13 == 1) {
+	        		      g1 = g1+1;
+	        		   } else if (result13 == 2) {
+	        		      g2 = g2+1;
+	        		   } else if (result13 == 3) {
+	        			  g3 = g3+1;
+	        		   } else if (result13 == 4) {
+	        			  g4 = g4+1;
+	        		   } else if (result13 == 5) {
+	        			  g5 = g5+1;
+	        		   } else if (result13 == 6) {
+	        			  g6 = g6+1;
+	        		   } else if (result13 == 7) {
+	        			  g7 = g7+1;
+	        	 	   } else if (result13 == 8) {
+	        			  g8 = g8+1;
+	        		   }
+	        			
+	        } else if(gamecount == 14){
+	        	   if (result14 == 9) {
+	        		      g9 = g9+1;
+	        		   } else if (result13 == 10) {
+	        		      g10 = g10+1;
+	        		   } else if (result13 == 11) {
+	        			  g11 = g11+1;
+	        		   } else if (result13 == 12) {
+	        			  g12 = g12+1;
+	        		   } else if (result13 == 13) {
+	        			  g13 = g13+1;
+	        		   } else if (result13 == 14) {
+	        			  g14 = g14+1;
+	        		   } else if (result13 == 15) {
+	        			  g15 = g15+1;
+	        	 	   } else if (result13 == 16) {
+	        			  g16 = g16+1;
+	        		   }
+	        			
+	        } else if(gamecount == 15){
+	        	   if (result15 == 1) {
+	        		      g1 = g1+1;
+	        		   } else if (result15 == 2) {
+	        		      g2 = g2+1;
+	        		   } else if (result15 == 3) {
+	        			  g3 = g3+1;
+	        		   } else if (result15 == 4) {
+	        			  g4 = g4+1;
+	        		   } else if (result15 == 5) {
+	        			  g5 = g5+1;
+	        		   } else if (result15 == 6) {
+	        			  g6 = g6+1;
+	        		   } else if (result15 == 7) {
+	        			  g7 = g7+1;
+	        	 	   } else if (result15 == 8) {
+	        			  g8 = g8+1;
+	        		   } else if (result15 == 9) {
+	        			  g9 = g9+1;
+	        		   } else if (result15 == 10) {
+	        			  g10 = g10+1;
+	        		   } else if (result15 == 11) {
+	        			  g11 = g11+1;		
+	        		   } else if (result13 == 12) {
+	        			  g12 = g12+1;
+	        		   } else if (result13 == 13) {
+	        			  g13 = g13+1;
+	        		   } else if (result13 == 14) {
+	        			  g14 = g14+1;
+	        		   } else if (result13 == 15) {
+	        			  g15 = g15+1;
+	        	 	   } else if (result13 == 16) {
+	        			  g16 = g16+1;
+	        		   }
+	        			
+	        } else if (gamecount==16){
+	        	
+	        }
+	        
+	        gamecount=gamecount+1;
 	        
 	        model.addAttribute("g1",g1);
 			model.addAttribute("g2",g2);

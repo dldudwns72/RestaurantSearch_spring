@@ -23,7 +23,7 @@
 	rel="stylesheet" type="text/css">
 
 <!-- Custom styles for this template -->
-<link href="css/landing-page.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/css/landing-page.min.css" rel="stylesheet">
 </head>
 <body>
 	<!-- Navigation -->
@@ -37,15 +37,18 @@
 				</ul>
 
 			</div>
-	</nav>
+		</div>
+	
+	
+	<!-- header-middle -->
 	<div class="header-middle">
-		<!--header-middle-->
 		<div class="container">
 			<div class="col-md-8 clearfix"></div>
 		</div>
 	</div>
-
-	</div>
-	<!--/header-middle-->
+	<!-- /header-middle -->
+		
+	</nav>
+	<!-- /Navigation -->
 </body>
 </html>

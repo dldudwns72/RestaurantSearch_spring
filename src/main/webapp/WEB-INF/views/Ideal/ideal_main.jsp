@@ -20,7 +20,6 @@
 	href="${pageContext.request.contextPath}/assets/css/shop-homepage.css"
 	rel="stylesheet">
 
-<script src="js/fun-btn.js"></script>	
 <link href="${pageContext.request.contextPath}/assets/css/fun-btn.css" rel="stylesheet">
 	
 </head>

@@ -58,14 +58,13 @@
 		<%@ include file="header.jsp"%>
 	</header>
 	
-	<!-- g1,g2 에 값넣기 -->
 
 <c:choose> 
 
- <c:when test="${gamecount eq 0}">
+ <c:when test="${gamecount eq 1}">
  
 	<div style="margin-left:auto; margin-right:auto; text-align:center; ">
-		<h1>Round ${gamecount+1}</h1>
+		<h1>Round ${gamecount}</h1>
 	</div>
 
   <form name="myform" method="post" action="${pageContext.request.contextPath}/Ideal/ideal_worldcup.do">
@@ -78,7 +77,7 @@
 		      <img src="${pageContext.request.contextPath}/assets/img/1.jpg">
 		  </div>
 		  <div style="margin-left:auto; margin-right:auto; text-align:center; ">
-		      <label> <input type="radio" name="result1" value="1"> </label>
+		      <label> <input type="radio" name="result1" value='${gamecount}'> </label>
 		  </div>
 	</div>
 	
@@ -87,46 +86,30 @@
 		      <img src="${pageContext.request.contextPath}/assets/img/2.jpg">
 		</div>
 		<div style="margin-left:auto; margin-right:auto; text-align:center; ">
-		      <label> <input type="radio" name="result1" value="2"> </label>
+		      <label> <input type="radio" name="result1" value='${gamecount+1}'> </label>
 		</div>
 	</div>
 	
-	
-	
-      <input type='hidden' name='g1' value='${g1}' />
-      <input type='hidden' name='g2' value='${g2}' />
-      <input type='hidden' name='result1' value='${result1}' />
-      <input type='hidden' name='gamecount' value='${gamecount+1}' />
+    <input type='hidden' name='gamecount' value='${gamecount}' />	
+    <input type='hidden' name='result1' value='${result1}' />
+    <input type='hidden' name='g1' value='${g1}' />
+	<input type='hidden' name='g2' value='${g2}' />     
 
       <div id="btn_group">
       <button id="button2" type="submit">다음단계</button>
       </div>
+         
   </div>
-
-     
-     <c:choose> 
-     <c:when test="${gamecount eq 0}">
-      
-	     <c:choose> 
- 	      <c:when test="${result1 eq 1}">
-	          <c:set var="g1" value='${g1+1}'/>
-	      </c:when>
-          
-          <c:when test="${result1 eq 2}">
-	          <c:set var="g2" value='${g2+1}'/>
-	      </c:when>
-          </c:choose>
-
-   </c:when>
-   </c:choose>
+  
 
    </form>
    
-</c:when>   
- <c:when test="${(gamecount gt 0) and (gamecount lt 8)}">
+ </c:when>   
+ <c:when test="${(gamecount gt 1) and (gamecount lt 9)}">
 
    <div style="margin-left:auto; margin-right:auto; text-align:center; ">
-		<h1>Round ${gamecount+1}</h1>
+		<h1>Round ${gamecount}</h1>
+
 	</div>
 
    <form name="myform" method="post" action="${pageContext.request.contextPath}/Ideal/ideal_worldcup.do">
@@ -136,27 +119,24 @@
       	
 	      	<div style="float: left; width: 50%;">
 		      	<div>
-			      	<img src="${pageContext.request.contextPath}/assets/img/${gamecount*2+1}.jpg">
+			      	<img src="${pageContext.request.contextPath}/assets/img/${gamecount*2-1}.jpg">
 			    </div>
 			    <div style="margin-left:auto; margin-right:auto; text-align:center; ">
-			      	<label> <input type="radio" name="result${gamecount+1}" value='${gamecount*2+1}'> </label>
+			      	<label> <input type="radio" name="result${gamecount}" value='${gamecount*2-1}'> </label>
 			    </div>
 		    </div>
 		    
 		    <div style="float: left; width: 50%;">
 			    <div>
-		      		<img src="${pageContext.request.contextPath}/assets/img/${gamecount*2+2}.jpg">
+		      		<img src="${pageContext.request.contextPath}/assets/img/${gamecount*2}.jpg">
 		      	</div>
 		      	<div style="margin-left:auto; margin-right:auto; text-align:center; ">
-		      		<label> <input type="radio" name="result${gamecount+1}" value='${gamecount*2+2}'> </label>
+		      		<label> <input type="radio" name="result${gamecount}" value='${gamecount*2}'> </label>
 		      	</div>
 	      	</div>
 	      	
-      
-      
- 
-      <input type='hidden' name='gamecount' value='${gamecount+1}' />
-      
+      <input type='hidden' name='gamecount' value='${gamecount}' />      
+
       <input type='hidden' name='result1' value='${result1}' />
       <input type='hidden' name='result2' value='${result2}' />
       <input type='hidden' name='result3' value='${result3}' />
@@ -182,118 +162,52 @@
       <input type='hidden' name='g14' value='${g14}' />
       <input type='hidden' name='g15' value='${g15}' />      
       <input type='hidden' name='g16' value='${g16}' />
-   
-      <div id="btn_group">
-      <button id="button2" type="submit">다음단계</button>
-      </div>
-      </div>
-      <c:choose>
-      <c:when test="${gamecount eq 2}">
-         <c:choose>
-           <c:when test="${result3 eq 5}">
-          	<c:set var="g5" value='${g5+1}'/>
-           </c:when>
-          
-           <c:when test="${result3 eq 6}">
-            <c:set var="g6" value='${g6+1}'/>
-            </c:when>
-          </c:choose>
-      </c:when>
-          
-       <c:when test="${gamecount eq 3}">
-       <c:choose>   
-           <c:when test="${result4 eq 7}">
-             <c:set var="g7" value='${g7+1}'/>
-           </c:when>
-           <c:when test="${result4 eq 8}">
-             <c:set var="g8" value='${g8+1}'/>
-           </c:when>
-       </c:choose>
-       </c:when>
-          
-       <c:when test="${gamecount eq 4}">
-        <c:choose>  
-           <c:when test="${result5 eq 9}">
-             <c:set var="g9" value='${g9+1}'/>
-           </c:when>
-           <c:when test="${result5 eq 10}">
-             <c:set var="g10" value='${g10+1}'/>
-           </c:when>
-         </c:choose>
-        </c:when>
-          
-       <c:when test="${gamecount eq 5}">
-       <c:choose>
-          <c:when test="${result6 eq 11}">
-             <c:set var="g11" value='${g11+1}'/>
-             </c:when>
-          <c:when test="${result6 eq 12}">
-             <c:set var="g12" value='${g12+1}'/>
-             </c:when>
-          </c:choose>
-          </c:when>
-          
-       <c:when test="${gamecount eq 6}">
-         <c:choose>
-          <c:when test="${result7 eq 13}">
-            <c:set var="g13" value='${g13+1}'/>
-             </c:when>
-          <c:when test="${result7 eq 14}">
-            <c:set var="g14" value='${g14+1}'/>
-             </c:when>
-          </c:choose>
-          </c:when>
-         
-       <c:when test="${gamecount eq 7}">
-         <c:choose>
-         <c:when test="${result8 eq 15}">
-             <c:set var="g15" value='${g15+1}'/>
-         </c:when>
-         <c:when test="${result8 eq 16}">
-            <c:set var="g16" value='${g16+1}'/>
-         </c:when>
-         </c:choose>
-         </c:when>
-         
-      </c:choose>
       
+     <div id="btn_group">
+     	 <button id="button2" type="submit">다음단계</button>
+      </div>
+      
+      </div>      
    </form>
    
    
 
 
-</c:when>
-<c:when test="${gamecount gt 8 and gamecount lt 15}">
+ </c:when>
+ <c:when test="${(gamecount gt 8) and (gamecount lt 15)}">
+   
+   <c:set var="rs1" value="result${(gamecount-8)*2-1}"/>
+   <c:set var="rs2" value="result${(gamecount-8)*2}"/>
+   
    
    <div style="margin-left:auto; margin-right:auto; text-align:center; ">
-		<h1>Round ${gamecount+1}</h1>
+		<h1>Round ${gamecount}</h1>
 	</div>
 
+	
    <form name="myform" method="post" action="${pageContext.request.contextPath}/Ideal/ideal_worldcup.do">
-   
 
 	<div style="margin-left:auto; margin-right:auto; text-align:center; ">		    
 		 <div style="float: left; width: 50%;">
 		   <div>
-			   <img src="${pageContext.request.contextPath}/assets/img/${((gamecount)-7)*2-1}.jpg">
+			   <img src="${pageContext.request.contextPath}/assets/img/${rs1}.jpg"> <h1>${rs1}</h1>
 			</div>
 			<div style="margin-left:auto; margin-right:auto; text-align:center; ">
-			   <label> <input type="radio" name="result${gamecount+1}" value="result${((gamecount)-7)*2-1}"> </label> 
+			   <label> <input type="radio" name="result${gamecount}" value="result${((gamecount)-8)*2-1}"> </label> 
 			</div>
 		 </div>
 			
 		<div style="float: left; width: 50%; ">
 			<div>   
-			   <img src="${pageContext.request.contextPath}/assets/img/${((gamecount)-7)*2}.jpg">
+			   <img src="${pageContext.request.contextPath}/assets/img/${rs2}.jpg">
 			</div>
 			<div style="margin-left:auto; margin-right:auto; text-align:center; ">
-			   <label> <input type="radio" name="result${gamecount+1}" value="result${((gamecount)-7)*2}"> </label>
+			   <label> <input type="radio" name="result${gamecount}" value="result${((gamecount)-8)*2}"> </label> <h1>${rs2}</h1>
 			</div>
 		</div>
-	
-
-      <input type='hidden' name='gamecount' value='${gamecount+1}' />
-      
+		
+	  <input type='hidden' name='gamecount' value='${gamecount}' />
+		
       <input type='hidden' name='result1' value='${result1}' />
       <input type='hidden' name='result2' value='${result2}' />
       <input type='hidden' name='result3' value='${result3}' />
@@ -327,196 +241,12 @@
       <input type='hidden' name='g15' value='${g15}' />      
       <input type='hidden' name='g16' value='${g16}' />
       
-     <div id="btn_group">
-      <button id="button2" type="submit">다음단계</button>
-      </div>
+      
+	      <div id="btn_group">
+	      	<button id="button2" type="submit">다음단계</button>
+	      </div>
       </div>
       
- <c:choose>
- 
-    <c:when test="${gamecount eq 8}">
-     	<c:choose>
-	  	   <c:when test="${result9 eq 1}">
-              <c:set var="g1" value='${g1+1}'/>
-             </c:when>
-           <c:when test="${result9 eq 2}">
-              <c:set var="g2" value='${g2+1}'/>
-             </c:when>
-           <c:when test="${result9 eq 3}">
-             <c:set var="g3" value='${g3+1}'/>
-             </c:when>
-           <c:when test="${result9 eq 4}">
-             <c:set var="g4" value='${g4+1}'/>
-             </c:when>
-         </c:choose>
-    </c:when>
-           
- 
- 
-   <c:when test="${gamecount eq 9}">
-     	<c:choose>
-           <c:when test="${result10 eq 5}">
-             <c:set var="g5" value='${g5+1}'/>
-             </c:when>
-           <c:when test="${result10 eq 6}">
-             <c:set var="g6" value='${g6+1}'/>
-             </c:when>
-           <c:when test="${result10 eq 7}">
-             <c:set var="g7" value='${g7+1}'/>
-             </c:when>
-           <c:when test="${result10 eq 8}">
-             <c:set var="g8" value='${g8+1}'/>
-             </c:when>
-         </c:choose>
-    </c:when>
-           
-           
-      <c:when test="${gamecount eq 10}">
-      <c:choose>
-           <c:when test="${result11 eq 9}">
-             <c:set var="g9" value='${g9+1}'/>
-             </c:when>
-           <c:when test="${result11 eq 10}">
-             <c:set var="g10" value='${g10+1}'/>
-             </c:when>
-           <c:when test="${result11 eq 11}">
-             <c:set var="g11" value='${g11+1}'/>
-             </c:when>
-           <c:when test="${result11 eq 12}">
-             <c:set var="g12" value='${g12+1}'/>
-             </c:when>
-       </c:choose>
-       </c:when>
-           
-    <c:when test="${gamecount eq 11}">
-    <c:choose>
-           <c:when test="${result11 eq 13}">
-             <c:set var="g13" value='${g13+1}'/>
-             </c:when>
-           <c:when test="${result11 eq 14}">
-             <c:set var="g14" value='${g14+1}'/>
-             </c:when>
-           <c:when test="${result11 eq 15}">
-             <c:set var="g15" value='${g15+1}'/>
-             </c:when>
-           <c:when test="${result11 eq 16}">
-            <c:set var="g16" value='${g16+1}'/>
-             </c:when>
-    </c:choose>
-    </c:when>
-           
-   <c:when test="${gamecount eq 12}">
-   	<c:choose>
-	  	   <c:when test="${result13 eq 1}">
-              <c:set var="g1" value='${g1+1}'/>
-             </c:when>
-           <c:when test="${result13 eq 2}">
-              <c:set var="g2" value='${g2+1}'/>
-             </c:when>
-           <c:when test="${result13 eq 3}">
-             <c:set var="g3" value='${g3+1}'/>
-             </c:when>
-           <c:when test="${result13 eq 4}">
-             <c:set var="g4" value='${g4+1}'/>
-             </c:when>
-           <c:when test="${result13 eq 5}">
-             <c:set var="g5" value='${g5+1}'/>
-             </c:when>
-           <c:when test="${result13 eq 6}">
-             <c:set var="g6" value='${g6+1}'/>
-             </c:when>
-           <c:when test="${result13 eq 7}">
-             <c:set var="g7" value='${g7+1}'/>
-             </c:when>
-            <c:when test="${result13 eq 8}">
-             <c:set var="g8" value='${g8+1}'/>
-             </c:when>
- 	</c:choose>   
-  </c:when>
-  
-  <c:when test="${gamecount eq 13}">
-  		<c:choose>
-           <c:when test="${result14 eq 9}">
-             <c:set var="g9" value='${g9+1}'/>
-             </c:when>
-           <c:when test="${result14 eq 10}">
-             <c:set var="g10" value='${g10+1}'/>
-             </c:when>
-           <c:when test="${result14 eq 11}">
-             <c:set var="g11" value='${g11+1}'/>
-             </c:when>
-           <c:when test="${result14 eq 12}">
-             <c:set var="g12" value='${g12+1}'/>
-             </c:when>
-           <c:when test="${result14 eq 13}">
-             <c:set var="g13" value='${g13+1}'/>
-             </c:when>
-           <c:when test="${result14 eq 14}">
-             <c:set var="g14" value='${g14+1}'/>
-             </c:when>
-           <c:when test="${result14 eq 15}">
-             <c:set var="g15" value='${g15+1}'/>
-             </c:when>
-            <c:when test="${result14 eq 16}">
-            <c:set var="g16" value='${g16+1}'/>
-             </c:when>
-  		</c:choose>
-  </c:when>
-  
-  <c:when test="${gamecount eq 14}">
-       
-       <c:choose>
-	  	   <c:when test="${result15 eq 1}">
-              <c:set var="g1" value='${g1+1}'/>
-             </c:when>
-           <c:when test="${result15 eq 2}">
-              <c:set var="g2" value='${g2+1}'/>
-             </c:when>
-           <c:when test="${result15 eq 3}">
-             <c:set var="g3" value='${g3+1}'/>
-             </c:when>
-           <c:when test="${result15 eq 4}">
-             <c:set var="g4" value='${g4+1}'/>
-             </c:when>
-           <c:when test="${result15 eq 5}">
-             <c:set var="g5" value='${g5+1}'/>
-             </c:when>
-           <c:when test="${result15 eq 6}">
-             <c:set var="g6" value='${g6+1}'/>
-             </c:when>
-           <c:when test="${result15 eq 7}">
-             <c:set var="g7" value='${g7+1}'/>
-             </c:when>
-            <c:when test="${result15 eq 8}">
-             <c:set var="g8" value='${g8+1}'/>
-             </c:when>
-           <c:when test="${result15 eq 9}">
-             <c:set var="g9" value='${g9+1}'/>
-             </c:when>
-           <c:when test="${result15 eq 10}">
-             <c:set var="g10" value='${g10+1}'/>
-             </c:when>
-           <c:when test="${result15 eq 11}">
-             <c:set var="g11" value='${g11+1}'/>
-             </c:when>
-           <c:when test="${result13 eq 12}">
-             <c:set var="g12" value='${g12+1}'/>
-             </c:when>
-           <c:when test="${result13 eq 13}">
-             <c:set var="g13" value='${g13+1}'/>
-             </c:when>
-           <c:when test="${result13 eq 14}">
-             <c:set var="g14" value='${g14+1}'/>
-             </c:when>
-           <c:when test="${result13 eq 15}">
-             <c:set var="g15" value='${g15+1}'/>
-             </c:when>
-            <c:when test="${result13 eq 16}">
-            <c:set var="g16" value='${g16+1}'/>
-             </c:when>
-       		 </c:choose>
-     </c:when>
-     </c:choose>
      </form>
 </c:when>           
    
